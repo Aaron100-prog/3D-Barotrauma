@@ -18,11 +18,13 @@ public class PlayerController : MonoBehaviour
     public CharacterController Controller;
     [HideInInspector]
     private Vector3 velocity;
-    public float walkspeed = 6f;
+    public float walkspeed = 1.5f;
+    public float runspeed = 4f;
     public float fallspeed = -10f;
     
     public Transform GroundCheck;
     public LayerMask GroundMask;
+    [HideInInspector]
     public float GroundDistance = 0.4f;
     private bool onGround;
 
@@ -49,7 +51,15 @@ public class PlayerController : MonoBehaviour
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
             Vector3 move = transform.right * x + transform.forward * z;
-            Controller.Move(move * walkspeed * Time.deltaTime);
+            if(Input.GetKey("left shift"))
+            {
+                Controller.Move(move * runspeed * Time.deltaTime);
+            }
+            else
+            {
+                Controller.Move(move * walkspeed * Time.deltaTime);
+            }
+            
             velocity.y += fallspeed * Time.deltaTime;
             Controller.Move(velocity * Time.deltaTime);
         }

@@ -77,7 +77,8 @@ public class PlayerController : MonoBehaviour
             if (Playercontrol_enabled)
             {
                 float z = Input.GetAxis("Vertical");
-                Vector3 move = transform.forward * z;
+                float x = Input.GetAxis("Horizontal");
+                Vector3 move = transform.right * x + transform.forward * z;
                 Controller.Move(move * walkspeed * Time.deltaTime);
             }
         }

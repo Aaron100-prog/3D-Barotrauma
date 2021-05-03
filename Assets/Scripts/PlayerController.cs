@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public bool swimming = false;
+    
 
     [Header("Camera Movement")]
     public float sensitivity = 180f;
@@ -29,6 +29,10 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public float GroundDistance = 0.4f;
     private bool onGround;
+
+    [Header("Swimming")]
+    public bool swimming = false;
+    public float downdrifting = -0.25f;
 
     void Start()
     {
@@ -81,6 +85,9 @@ public class PlayerController : MonoBehaviour
                 float y = Input.GetAxis("Jump");
                 Vector3 move = transform.up * y + transform.right * x + transform.forward * z;
                 Controller.Move(move * walkspeed * Time.deltaTime);
+
+                velocity.y = downdrifting;
+                Controller.Move(velocity * Time.deltaTime);
             }
         }
     }

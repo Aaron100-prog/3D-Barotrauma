@@ -78,7 +78,8 @@ public class PlayerController : MonoBehaviour
             {
                 float z = Input.GetAxis("Vertical");
                 float x = Input.GetAxis("Horizontal");
-                Vector3 move = transform.right * x + transform.forward * z;
+                float y = Input.GetAxis("Jump");
+                Vector3 move = transform.up * y + transform.right * x + transform.forward * z;
                 Controller.Move(move * walkspeed * Time.deltaTime);
             }
         }

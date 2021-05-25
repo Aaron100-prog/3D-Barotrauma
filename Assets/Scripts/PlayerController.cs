@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     [Header("Swimming")]
     public bool swimming = false;
     public float downdrifting = -0.25f;
+    private float rollza = 0f;
 
     void Start()
     {
@@ -83,6 +84,11 @@ public class PlayerController : MonoBehaviour
                 float z = Input.GetAxis("Vertical");
                 float x = Input.GetAxis("Horizontal");
                 float y = Input.GetAxis("Jump");
+
+                float rollz = Input.GetAxis("Roll") * 100f * Time.deltaTime;
+                rollza -= rollz;
+                this.transform.localRotation = Quaternion.Euler(0f , 0f, rollza);
+
                 Vector3 move = transform.up * y + transform.right * x + transform.forward * z;
                 Controller.Move(move * walkspeed * Time.deltaTime);
 

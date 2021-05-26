@@ -92,7 +92,17 @@ public class PlayerController : MonoBehaviour
 
                 Vector3 move = transform.up * y + transform.right * x + transform.forward * z;
                 float swimspeed = walkspeed * 0.75f;
-                Controller.Move(move * swimspeed * Time.deltaTime);
+                float fastswimspeed = runspeed * 0.75f;
+
+                if (Input.GetKey("left shift"))
+                {
+                    Controller.Move(move * fastswimspeed * Time.deltaTime);
+                }
+                else
+                {
+                    Controller.Move(move * swimspeed * Time.deltaTime);
+                }
+                
 
                 velocity.y = downdrifting;
                 Controller.Move(velocity * Time.deltaTime);

@@ -91,8 +91,8 @@ public class PlayerController : MonoBehaviour
                 this.transform.localRotation = Quaternion.Euler(0f , 0f, rollza);
 
                 Vector3 move = transform.up * y + transform.right * x + transform.forward * z;
-                float swimspeed = walkspeed * 0.75f;
-                float fastswimspeed = runspeed * 0.75f;
+                float swimspeed = walkspeed * 0.4f;
+                float fastswimspeed = runspeed * 0.4f;
 
                 if (Input.GetKey("left shift"))
                 {

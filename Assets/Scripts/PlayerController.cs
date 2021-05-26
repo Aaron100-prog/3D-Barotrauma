@@ -91,7 +91,8 @@ public class PlayerController : MonoBehaviour
                 this.transform.localRotation = Quaternion.Euler(0f , 0f, rollza);
 
                 Vector3 move = transform.up * y + transform.right * x + transform.forward * z;
-                Controller.Move(move * walkspeed * Time.deltaTime);
+                float swimspeed = walkspeed * 0.75f;
+                Controller.Move(move * swimspeed * Time.deltaTime);
 
                 velocity.y = downdrifting;
                 Controller.Move(velocity * Time.deltaTime);

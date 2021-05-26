@@ -84,8 +84,9 @@ public class PlayerController : MonoBehaviour
                 float z = Input.GetAxis("Vertical");
                 float x = Input.GetAxis("Horizontal");
                 float y = Input.GetAxis("Jump");
+                float rollspeed = walkspeed * 50f;
 
-                float rollz = Input.GetAxis("Roll") * 100f * Time.deltaTime;
+                float rollz = Input.GetAxis("Roll") * rollspeed * Time.deltaTime;
                 rollza -= rollz;
                 this.transform.localRotation = Quaternion.Euler(0f , 0f, rollza);
 

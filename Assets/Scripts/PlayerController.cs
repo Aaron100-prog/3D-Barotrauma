@@ -87,8 +87,7 @@ public class PlayerController : MonoBehaviour
                 float rollspeed = walkspeed * 50f;
 
                 float rollz = Input.GetAxis("Roll") * rollspeed * Time.deltaTime;
-                rollza -= rollz;
-                this.transform.localRotation = Quaternion.Euler(0f , 0f, rollza);
+                this.transform.Rotate(Vector3.back * rollz);
 
                 Vector3 move = transform.up * y + transform.right * x + transform.forward * z;
                 float swimspeed = walkspeed * 0.4f;

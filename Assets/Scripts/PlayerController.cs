@@ -77,7 +77,9 @@ public class PlayerController : MonoBehaviour
         {
             if (Cameracontrol_enabled == true)
             {
-                
+                float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
+                float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+                this.transform.Rotate(Vector3.left * mouseY + Vector3.up * mouseX);
             }
             if (Playercontrol_enabled)
             {

@@ -83,6 +83,13 @@ public class PlayerController : MonoBehaviour
             }
             if (Playercontrol_enabled)
             {
+                if (Input.GetKey("x"))
+                {
+                    Vector3 direction = new Vector3(0, transform.rotation.eulerAngles.y, 0);
+                    Quaternion targetRotation = Quaternion.Euler(direction);
+                    this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, Time.deltaTime * 2);
+                }
+
                 float z = Input.GetAxis("Vertical");
                 float x = Input.GetAxis("Horizontal");
                 float y = Input.GetAxis("Jump");

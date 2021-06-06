@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
     public bool swimming = false;
     public float downdrifting = -0.25f;
 
+    private bool ragdolled = false;
+
     void Start()
     {
         Camera = this.gameObject.GetComponentInChildren<Camera>();
@@ -110,9 +112,12 @@ public class PlayerController : MonoBehaviour
                     Controller.Move(move * swimspeed * Time.deltaTime);
                 }
                 
-
-                velocity.y = downdrifting;
-                Controller.Move(velocity * Time.deltaTime);
+                if(ragdolled == true)
+                {
+                    velocity.y = downdrifting;
+                    Controller.Move(velocity * Time.deltaTime);
+                }
+                
             }
         }
     }

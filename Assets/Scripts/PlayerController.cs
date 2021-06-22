@@ -120,5 +120,40 @@ public class PlayerController : MonoBehaviour
                 
             }
         }
+        if(Input.GetKeyDown("c"))
+        {
+            EnterHull();
+        }
+        if (Input.GetKeyDown("v"))
+        {
+            ExitHull();
+        }
+    }
+
+    public void EnterHull()
+    {
+        swimming = false;
+
+        Camera.transform.Rotate(Vector3.up * this.transform.localRotation.x);
+
+        //ToDo: Möglichkeit finden rotation flüssig und langsamer so produzieren, schleifen jeglicher Form crashen denn Editor komplett
+        Vector3 direction = new Vector3(0, transform.rotation.eulerAngles.y, 0);
+        Quaternion targetRotation = Quaternion.Euler(direction);
+        this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, 1);
+
+        //while(this.transform.localRotation.y != 0)
+        //{
+        //    Vector3 direction = new Vector3(0, transform.rotation.eulerAngles.y, 0);
+        //    Quaternion targetRotation = Quaternion.Euler(direction);
+        //    this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, 1);
+        //}
+    }
+
+    public void ExitHull()
+    {
+        swimming = true;
+        this.transform.Rotate(90f, 90f, 90f);
+
+        Camera.transform.Rotate(0, 0, 0);
     }
 }

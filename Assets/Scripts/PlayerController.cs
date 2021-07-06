@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public bool Cameracontrol_enabled = true;
     [HideInInspector]
     public Camera Camera;
+    private bool Zoomed = false;
 
     [Header("Player Movement")]
     public bool Playercontrol_enabled = true;
@@ -54,6 +55,23 @@ public class PlayerController : MonoBehaviour
                 yRotation = Mathf.Clamp(yRotation, -90f, 90f);
                 Camera.transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
                 this.transform.Rotate(Vector3.up * mouseX);
+
+                if(Input.GetMouseButtonDown(1))
+                {
+                    Zoomed = true;
+                }
+                if(Input.GetMouseButtonUp(1))
+                {
+                    Zoomed = false;
+                }
+                if (Zoomed)
+                {
+                    Camera.fieldOfView = Mathf.Lerp(Camera.fieldOfView, 20, Time.deltaTime * 2);
+                }
+                else
+                {
+                    Camera.fieldOfView = Mathf.Lerp(Camera.fieldOfView, 60, Time.deltaTime * 2);
+                }
             }
             if (Playercontrol_enabled)
             {
@@ -81,6 +99,23 @@ public class PlayerController : MonoBehaviour
                 float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
                 float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
                 this.transform.Rotate(Vector3.left * mouseY + Vector3.up * mouseX);
+
+                if (Input.GetMouseButtonDown(2))
+                {
+                    Zoomed = true;
+                }
+                if (Input.GetMouseButtonUp(2))
+                {
+                    Zoomed = false;
+                }
+                if (Zoomed)
+                {
+                    Camera.fieldOfView = Mathf.Lerp(Camera.fieldOfView, 20, Time.deltaTime * 2);
+                }
+                else
+                {
+                    Camera.fieldOfView = Mathf.Lerp(Camera.fieldOfView, 60, Time.deltaTime * 2);
+                }
             }
             if (Playercontrol_enabled)
             {

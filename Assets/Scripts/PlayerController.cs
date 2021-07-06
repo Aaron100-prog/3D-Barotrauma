@@ -136,17 +136,7 @@ public class PlayerController : MonoBehaviour
 
         Camera.transform.Rotate(Vector3.up * this.transform.localRotation.x);
 
-        //ToDo: Möglichkeit finden rotation flüssig und langsamer so produzieren, schleifen jeglicher Form crashen denn Editor komplett
-        Vector3 direction = new Vector3(0, transform.rotation.eulerAngles.y, 0);
-        Quaternion targetRotation = Quaternion.Euler(direction);
-        this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, 1);
-
-        //while(this.transform.localRotation.y != 0)
-        //{
-        //    Vector3 direction = new Vector3(0, transform.rotation.eulerAngles.y, 0);
-        //    Quaternion targetRotation = Quaternion.Euler(direction);
-        //    this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, 1);
-        //}
+        StartCoroutine("ResetRotation");
     }
 
     public void ExitHull()
@@ -155,5 +145,17 @@ public class PlayerController : MonoBehaviour
         this.transform.Rotate(90f, 90f, 90f);
 
         Camera.transform.Rotate(0, 0, 0);
+    }
+
+    IEnumerator ResetRotation()
+    {
+        while (System.Math.Round(this.transform.eulerAngles.z,2) != 0 && System.Math.Round(this.transform.eulerAngles.x,2) != 0)
+        {
+            Vector3 direction = new Vector3(0, transform.rotation.eulerAngles.y, 0);
+            Quaternion targetRotation = Quaternion.Euler(direction);
+            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, Time.deltaTime * 2);
+            yield return null;
+        }
+        this.transform.rotation = Quaternion.Euler( 0, transform.eulerAngles.y, 0);
     }
 }

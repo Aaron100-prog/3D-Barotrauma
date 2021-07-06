@@ -142,9 +142,11 @@ public class PlayerController : MonoBehaviour
     public void ExitHull()
     {
         swimming = true;
-        this.transform.Rotate(90f, 90f, 90f);
 
-        Camera.transform.Rotate(0, 0, 0);
+        this.transform.localRotation = Quaternion.Euler(Camera.transform.eulerAngles.x, this.transform.eulerAngles.y, this.transform.eulerAngles.z);
+        Camera.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+        StopCoroutine("ResetRotation");
     }
 
     IEnumerator ResetRotation()

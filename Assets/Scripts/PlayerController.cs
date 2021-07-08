@@ -165,6 +165,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void OnTriggerStay(Collider collider)
+    {
+        if(collider.tag == "Hull")
+        {
+            Debug.Log("Befindet sich in einer Hülle");
+        }
+        else
+        {
+            Debug.Log("Nicht in einer Hülle!");
+        }
+    }
+
     public void EnterHull()
     {
         swimming = false;

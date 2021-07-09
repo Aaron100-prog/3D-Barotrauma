@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnTriggerStay(Collider collider)
+    void OnTriggerEnter(Collider collider)
     {
         if(collider.tag == "Hull")
         {

@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public float GroundDistance = 0.4f;
     private bool onGround;
+    private bool inside;
+    public LayerMask HullMask;
 
     [Header("Swimming")]
     public bool swimming = false;
@@ -45,6 +47,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        inside = Physics.CheckSphere(this.transform.position, 0f, HullMask);
+        if(inside)
+        {
+            Debug.Log("Befindet sich in einer Hülle");
+        }
         if(swimming == false)
         {
             if (Cameracontrol_enabled == true)

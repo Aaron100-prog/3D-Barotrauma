@@ -2,32 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(MeshFilter))]
+[RequireComponent(typeof(MeshRenderer))]
 public class HullCombine : MonoBehaviour
 {
+
     
     void Start()
     {
-        List<Mesh> Children = new List<Mesh>();
-        foreach (Transform child in transform)
-        {
-            Children.Add(child.gameObject.GetComponent<Mesh>());
-        }
-        Debug.Log(Children);
-        var mesh = CombineMeshes(Children);
-        GetComponent<MeshFilter>().mesh = mesh;
-    }
+        MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>();
+        CombineInstance[] combine = new CombineInstance[meshFilters.Length];
 
-    private Mesh CombineMeshes(List<Mesh> meshes)
-    {
-        var combine = new CombineInstance[meshes.Count];
-        for(int i = 0; i < meshes.Count; i++)
+        int i = 0;
+        while (i < meshFilters.Length)
         {
-            combine[i].mesh = meshes[i];
-            combine[i].transform = transform.localToWorldMatrix;
-        }
+            combine[i].mesh = meshFilters[i].sharedMesh;
+            combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
+            meshFilters[i].gameObject.SetActive(false);
 
-        var mesh = new Mesh();
-        mesh.CombineMeshes(combine);
-        return mesh;
+            i++;
+        }
+        transform.GetComponent<MeshFilter>().mesh = new Mesh();
+        transform.GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
+        transform.gameObject.SetActive(true);
     }
 }

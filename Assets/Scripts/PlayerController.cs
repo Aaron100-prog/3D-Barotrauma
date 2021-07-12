@@ -48,9 +48,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         inside = Physics.CheckSphere(this.transform.position, 0f, HullMask);
-        if(inside)
+        if(inside && swimming == true)
         {
-            Debug.Log("Befindet sich in einer Hülle");
+            EnterHull();
+        }
+        else if(!inside && swimming == false)
+        {
+            ExitHull();
         }
         if(swimming == false)
         {
@@ -169,18 +173,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("v"))
         {
             ExitHull();
-        }
-    }
-
-    void OnTriggerEnter(Collider collider)
-    {
-        if(collider.tag == "Hull")
-        {
-            Debug.Log("Befindet sich in einer Hülle");
-        }
-        else
-        {
-            Debug.Log("Nicht in einer Hülle!");
         }
     }
 

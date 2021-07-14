@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
         Collider[] hitcollider = Physics.OverlapSphere(this.transform.position, 0f, HullMask, QueryTriggerInteraction.Collide); //TODO: OverlapCapsule benutzen damit der gesamten Charakter geprüft wird, und so niemals mit Arm/Bein/Kopf außerhalb einer Hülle ist, aber noch behandelt wird als wäre er in einer hülle.
         if(hitcollider.Length != 0 && swimming == true)
         {
-            EnterHull();
+            EnterHull(hitcollider[0]);
         }
         else if(hitcollider.Length == 0 && swimming == false)
         {
@@ -168,7 +168,7 @@ public class PlayerController : MonoBehaviour
         }
         if(Input.GetKeyDown("c"))
         {
-            EnterHull();
+            EnterHull(null);
         }
         if (Input.GetKeyDown("v"))
         {
@@ -176,12 +176,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void EnterHull()
+    public void EnterHull(Collider HullParent)
     {
         swimming = false;
 
         Camera.transform.Rotate(Vector3.up * this.transform.localRotation.x);
-
+        this.transform.SetParent(HullParent.transform.parent.parent);
         StartCoroutine("ResetRotation");
     }
 
@@ -191,6 +191,7 @@ public class PlayerController : MonoBehaviour
 
         this.transform.localRotation = Quaternion.Euler(Camera.transform.eulerAngles.x, this.transform.eulerAngles.y, this.transform.eulerAngles.z);
         Camera.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        this.transform.SetParent(null);
 
         StopCoroutine("ResetRotation");
     }

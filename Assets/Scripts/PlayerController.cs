@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Collider[] hitcollider = Physics.OverlapSphere(this.transform.position, 0f, HullMask, QueryTriggerInteraction.Collide); //TODO: OverlapCapsule benutzen damit der gesamten Charakter geprüft wird, und so niemals mit Arm/Bein/Kopf außerhalb einer Hülle ist, aber noch behandelt wird als wäre er in einer hülle.
-        Debug.Log(hitcollider.Length);
         if(hitcollider.Length != 0 && swimming == true)
         {
             EnterHull();

@@ -2035,7 +2035,7 @@ MonoBehaviour:
   GroundMask:
     serializedVersion: 2
     m_Bits: 256
-  GroundDistance: 0
+  GroundDistance: 0.2
   HullMask:
     serializedVersion: 2
     m_Bits: 512

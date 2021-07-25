@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
     
     public Transform GroundCheck;
     public LayerMask GroundMask;
-    [HideInInspector]
     public float GroundDistance = 0.4f;
     private bool onGround;
     private bool inside;
@@ -87,6 +86,11 @@ public class PlayerController : MonoBehaviour
             if (Playercontrol_enabled)
             {
                 onGround = Physics.CheckSphere(GroundCheck.position, GroundDistance, GroundMask);
+                //Debug.Log(velocity.y + " " + onGround);
+                if (onGround && velocity.y < 0)
+                {
+                    velocity.y = -2f;
+                }
                 float x = Input.GetAxis("Horizontal");
                 float z = Input.GetAxis("Vertical");
                 Vector3 move = transform.right * x + transform.forward * z;

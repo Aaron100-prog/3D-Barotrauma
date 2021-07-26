@@ -66,11 +66,11 @@ public class PlayerController : MonoBehaviour
                 Camera.transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
                 this.transform.Rotate(Vector3.up * mouseX);
 
-                if(Input.GetMouseButtonDown(1))
+                if(Input.GetMouseButtonDown(2))
                 {
                     Zoomed = true;
                 }
-                if(Input.GetMouseButtonUp(1))
+                if(Input.GetMouseButtonUp(2))
                 {
                     Zoomed = false;
                 }

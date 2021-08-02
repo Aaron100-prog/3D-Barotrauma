@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
 
     private bool ragdolled = false;
 
+    public TMPro.TextMeshProUGUI Text;
+
     void Start()
     {
         Camera = this.gameObject.GetComponentInChildren<Camera>();
@@ -55,6 +57,19 @@ public class PlayerController : MonoBehaviour
         {
             ExitHull();
         }
+
+        Ray ray = Camera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 4f))
+        {
+            Interactable interactable = hit.collider.GetComponent<Interactable>();
+
+            if(interactable != null)
+            {
+                PerformInteraction(interactable);
+            }
+        }
+
         if(swimming == false)
         {
             if (Cameracontrol_enabled == true)
@@ -199,6 +214,21 @@ public class PlayerController : MonoBehaviour
 
         StopCoroutine("ResetRotation");
     }
+
+    void PerformInteraction(Interactable interactable)
+    {
+        switch (interactable.interactiontype)
+        {
+            case Interactable.Interactiontype.CLICK:
+                if(Input.GetKeyDown(KeyCode.E))
+                {
+                        interactable.Interact();
+                        
+                }
+                break;
+        }
+    }
+
 
     IEnumerator ResetRotation()
     {

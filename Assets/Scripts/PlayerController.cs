@@ -226,6 +226,22 @@ public class PlayerController : MonoBehaviour
                         
                 }
                 break;
+            case Interactable.Interactiontype.HOLD:
+                if (Input.GetKey(KeyCode.E))
+                {
+                    interactable.IncreaseHOLDTime();
+                    if(interactable.GetHOLDTime() > 1f)
+                    {
+                        interactable.Interact();
+                        interactable.ResetHOLDTime();
+                    }
+                }
+                else
+                {
+                    interactable.ResetHOLDTime();
+                }
+                Debug.Log(interactable.GetHOLDTime());
+                break;
         }
     }
 

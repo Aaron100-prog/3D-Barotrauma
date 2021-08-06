@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
     private bool ragdolled = false;
 
     public TMPro.TextMeshProUGUI Text;
+    public UnityEngine.UI.Image InteractionProgress;
+    public GameObject interactionHoldGO;
 
     void Start()
     {
@@ -70,11 +72,14 @@ public class PlayerController : MonoBehaviour
                 PerformInteraction(interactable);
                 Text.text = interactable.GetDescription();
                 success = true;
+
+                interactionHoldGO.SetActive(interactable.interactiontype == Interactable.Interactiontype.HOLD);
             }
 
             if (!success)
             {
                 Text.text = "";
+                interactionHoldGO.SetActive(false);
             }
         }
 
@@ -248,7 +253,7 @@ public class PlayerController : MonoBehaviour
                 {
                     interactable.ResetHOLDTime();
                 }
-                Debug.Log(interactable.GetHOLDTime());
+                InteractionProgress.fillAmount = interactable.GetHOLDTime();
                 break;
         }
     }

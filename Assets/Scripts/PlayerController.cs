@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
 
         Ray ray = Camera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));
         RaycastHit hit;
+        bool success = false;
         if (Physics.Raycast(ray, out hit, 4f))
         {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
@@ -67,6 +68,13 @@ public class PlayerController : MonoBehaviour
             if(interactable != null)
             {
                 PerformInteraction(interactable);
+                Text.text = interactable.GetDescription();
+                success = true;
+            }
+
+            if (!success)
+            {
+                Text.text = "";
             }
         }
 

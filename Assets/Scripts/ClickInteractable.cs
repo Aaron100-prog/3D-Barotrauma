@@ -8,4 +8,9 @@ public class ClickInteractable : Interactable
     {
         Debug.Log("Interacted (CLICK)");
     }
+
+    public override string GetDescription()
+    {
+        return "Interagieren <color=green>E</color>";
+    }
 }

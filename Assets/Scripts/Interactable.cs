@@ -10,6 +10,7 @@ public abstract class Interactable : MonoBehaviour
         HOLD,
     }
     public Interactiontype interactiontype;
+    public abstract string GetDescription();
     public abstract void Interact();
 
     float HOLDTime;

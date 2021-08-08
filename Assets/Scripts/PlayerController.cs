@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     public TMPro.TextMeshProUGUI Text;
     public UnityEngine.UI.Image InteractionProgress;
     public GameObject interactionHoldGO;
+    public GameObject interactionClickGO;
 
     void Start()
     {
@@ -74,12 +75,14 @@ public class PlayerController : MonoBehaviour
                 success = true;
 
                 interactionHoldGO.SetActive(interactable.interactiontype == Interactable.Interactiontype.HOLD);
+                interactionClickGO.SetActive(interactable.interactiontype == Interactable.Interactiontype.CLICK);
             }
 
             if (!success)
             {
                 Text.text = "";
                 interactionHoldGO.SetActive(false);
+                interactionClickGO.SetActive(false);
             }
         }
 

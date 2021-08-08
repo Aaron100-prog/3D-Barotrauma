@@ -717,7 +717,7 @@ Transform:
   - {fileID: 1634867953}
   - {fileID: 839125335}
   m_Father: {fileID: 668513101}
-  m_RootOrder: 32
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &146088208
 GameObject:
@@ -993,6 +993,7 @@ MonoBehaviour:
   Text: {fileID: 0}
   InteractionProgress: {fileID: 0}
   interactionHoldGO: {fileID: 0}
+  interactionClickGO: {fileID: 0}
 --- !u!143 &163433185
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2290,10 +2291,10 @@ Transform:
   - {fileID: 1677395480}
   - {fileID: 2033746555}
   - {fileID: 263471945}
-  - {fileID: 48854760}
   - {fileID: 70280682}
-  - {fileID: 441660963}
+  - {fileID: 48854760}
   - {fileID: 1149878023}
+  - {fileID: 441660963}
   - {fileID: 1458429566}
   - {fileID: 60833847}
   - {fileID: 1514231051}
@@ -2656,6 +2657,7 @@ MonoBehaviour:
   Text: {fileID: 27950640}
   InteractionProgress: {fileID: 1989298277}
   interactionHoldGO: {fileID: 1989298275}
+  interactionClickGO: {fileID: 708043755}
 --- !u!143 &779505904
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3188,7 +3190,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 668513101}
-  m_RootOrder: 34
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1149878024
 BoxCollider:

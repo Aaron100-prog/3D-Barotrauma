@@ -11,6 +11,6 @@ public class ClickInteractable : Interactable
 
     public override string GetDescription()
     {
-        return "Interagieren <color=green>E</color>";
+        return "Interagieren";
     }
 }

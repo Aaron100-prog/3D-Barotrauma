@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
         Controller = this.gameObject.GetComponent<CharacterController>();
         interactionHoldGO.SetActive(false);
         interactionClickGO.SetActive(false);
+        Text.text = "";
     }
 
     void Update()

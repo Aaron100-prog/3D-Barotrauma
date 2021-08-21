@@ -8,15 +8,21 @@ public abstract class Interactable : MonoBehaviour
     {
         CLICK,
         HOLD,
+        OBJECT,
     }
+    //CLICK
     public Interactiontype interactiontype;
     public abstract string GetDescription();
     public abstract void Interact();
 
+    //HOLD
     float HOLDTime;
 
     public void IncreaseHOLDTime() => HOLDTime += Time.deltaTime;
     public void ResetHOLDTime() => HOLDTime = 0f;
 
     public float GetHOLDTime() => HOLDTime;
+
+    //OBJECT
+    public abstract Vector3 OBJECT_ForcePosition();
 }

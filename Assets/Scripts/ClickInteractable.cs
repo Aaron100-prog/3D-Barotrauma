@@ -13,4 +13,10 @@ public class ClickInteractable : Interactable
     {
         return "Interagieren";
     }
+
+    public override Vector3 OBJECT_ForcePosition()
+    {
+        throw new System.NotImplementedException();
+    }
+
 }

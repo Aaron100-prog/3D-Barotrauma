@@ -2,13 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JuctionBoxDoor : Interactable
+public class Ladder : Interactable
 {
-    Animator animator;
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
+    public Vector3 Vector = new Vector3(1.0f, 1.0f, 1.0f);
     public override string GetDescription()
     {
         return "Interagieren";
@@ -16,12 +12,11 @@ public class JuctionBoxDoor : Interactable
 
     public override void Interact()
     {
-        animator.SetBool("isopening", !animator.GetBool("isopening"));
+        Debug.Log("Interacted (CLICK)");
     }
 
     public override Vector3 OBJECT_ForcePosition()
     {
-        throw new System.NotImplementedException();
+        return Vector;
     }
-
 }

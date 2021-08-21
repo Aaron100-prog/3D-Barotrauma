@@ -261,7 +261,18 @@ public class PlayerController : MonoBehaviour
                 }
                 InteractionProgress.fillAmount = interactable.GetHOLDTime();
                 break;
+            case Interactable.Interactiontype.OBJECT:
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    interactable.Interact();
+                    this.transform.SetParent(interactable.transform.parent.transform, true);
+                    Playercontrol_enabled = false;
+                    Controller.enabled = false;
+                    this.transform.position = interactable.OBJECT_ForcePosition();
+                }
+                break;
         }
+
     }
 
 

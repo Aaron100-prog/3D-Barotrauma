@@ -116,6 +116,11 @@ public class PlayerController : MonoBehaviour
                 {
                     Camera.fieldOfView = Mathf.Lerp(Camera.fieldOfView, 60, Time.deltaTime * 2);
                 }
+                if (Input.GetKeyDown(KeyCode.F12))
+                {
+                    ScreenCapture.CaptureScreenshot(Application.dataPath + "/Screenshots/" + System.DateTime.Now.ToString("yy'-'MM'-'dd'-'hh'-'mm'-'ss") + ".png");
+                    Debug.Log("Screenshot " + Application.dataPath + "/Screenshots/" + System.DateTime.Now.ToString("yy'-'MM'-'dd'-'hh'-'mm'-'ss") + ".png");
+                }
             }
             if (Playercontrol_enabled)
             {
@@ -164,6 +169,11 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     Camera.fieldOfView = Mathf.Lerp(Camera.fieldOfView, 60, Time.deltaTime * 2);
+                }
+                if (Input.GetKeyDown(KeyCode.F12))
+                {
+                    ScreenCapture.CaptureScreenshot(Application.dataPath + "/Screenshots/" + System.DateTime.Now.ToString("yy'-'MM'-'dd'-'hh'-'mm'-'ss") + ".png");
+                    Debug.Log("Screenshot " + Application.dataPath + "/Screenshots/" + System.DateTime.Now.ToString("yy'-'MM'-'dd'-'hh'-'mm'-'ss") + ".png");
                 }
             }
             if (Playercontrol_enabled)

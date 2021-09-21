@@ -156,9 +156,16 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    Vector3 direction = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
-                    Quaternion targetRotation = Quaternion.Euler(direction);
-                    this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, Time.deltaTime * 4);
+                    if(System.Math.Round(this.transform.eulerAngles.z, 2) != 0)
+                    {
+                        Vector3 direction = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
+                        Quaternion targetRotation = Quaternion.Euler(direction);
+                        this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, Time.deltaTime * 4);
+                        if(System.Math.Round(this.transform.eulerAngles.z, 2) == 0)
+                        {
+                            this.transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0);
+                        }
+                    }
                 }
                 
                 velocity.y += fallspeed * Time.deltaTime;

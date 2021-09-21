@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
     public float walkspeed = 1.5f;
     public float runspeed = 4f;
     public float fallspeed = -10f;
-    private float CurrentAngle = 0f;
 
     public Transform GroundCheck;
     public LayerMask GroundMask;
@@ -145,17 +144,23 @@ public class PlayerController : MonoBehaviour
 
                 if (Input.GetKey(KeyCode.Q))
                 {
-                    CurrentAngle = Mathf.MoveTowardsAngle(CurrentAngle, 20, 2 * Time.deltaTime);
+                    Vector3 direction = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 35);
+                    Quaternion targetRotation = Quaternion.Euler(direction);
+                    this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, Time.deltaTime * 3);
                 }
                 else if (Input.GetKey(KeyCode.E))
                 {
-                    CurrentAngle = Mathf.MoveTowardsAngle(CurrentAngle, -20, 2 * Time.deltaTime);
+                    Vector3 direction = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, -35);
+                    Quaternion targetRotation = Quaternion.Euler(direction);
+                    this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, Time.deltaTime * 3);
                 }
                 else
                 {
-                    CurrentAngle = Mathf.MoveTowardsAngle(CurrentAngle, 0f, 2 * Time.deltaTime);
+                    Vector3 direction = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
+                    Quaternion targetRotation = Quaternion.Euler(direction);
+                    this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, Time.deltaTime * 4);
                 }
-                this.transform.localRotation = Quaternion.AngleAxis(CurrentAngle, Vector3.forward);
+                
                 velocity.y += fallspeed * Time.deltaTime;
                 Controller.Move(velocity * Time.deltaTime);
             }

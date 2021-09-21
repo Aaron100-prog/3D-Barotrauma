@@ -110,11 +110,26 @@ public class PlayerController : MonoBehaviour
                 }
                 if (Zoomed)
                 {
-                    Camera.fieldOfView = Mathf.Lerp(Camera.fieldOfView, 20, Time.deltaTime * 2);
+                    if (System.Math.Round(Camera.fieldOfView, 2) != 20)
+                    {
+                        Camera.fieldOfView = Mathf.Lerp(Camera.fieldOfView, 20, Time.deltaTime * 2);
+                        if (System.Math.Round(Camera.fieldOfView, 2) == 20)
+                        {
+                            Camera.fieldOfView = 20;
+                        }
+                    }
                 }
                 else
                 {
-                    Camera.fieldOfView = Mathf.Lerp(Camera.fieldOfView, 60, Time.deltaTime * 2);
+                    if(System.Math.Round(Camera.fieldOfView, 2) != 60)
+                    {
+                        Camera.fieldOfView = Mathf.Lerp(Camera.fieldOfView, 60, Time.deltaTime * 2);
+                        if (System.Math.Round(Camera.fieldOfView, 2) == 60)
+                        {
+                            Camera.fieldOfView = 60;
+                        }
+                    }
+                    
                 }
                 if (Input.GetKeyDown(KeyCode.F12))
                 {
@@ -190,11 +205,26 @@ public class PlayerController : MonoBehaviour
                 }
                 if (Zoomed)
                 {
-                    Camera.fieldOfView = Mathf.Lerp(Camera.fieldOfView, 20, Time.deltaTime * 2);
+                    if (System.Math.Round(Camera.fieldOfView, 2) != 20)
+                    {
+                        Camera.fieldOfView = Mathf.Lerp(Camera.fieldOfView, 20, Time.deltaTime * 2);
+                        if (System.Math.Round(Camera.fieldOfView, 2) == 20)
+                        {
+                            Camera.fieldOfView = 20;
+                        }
+                    }
                 }
                 else
                 {
-                    Camera.fieldOfView = Mathf.Lerp(Camera.fieldOfView, 60, Time.deltaTime * 2);
+                    if (System.Math.Round(Camera.fieldOfView, 2) != 60)
+                    {
+                        Camera.fieldOfView = Mathf.Lerp(Camera.fieldOfView, 60, Time.deltaTime * 2);
+                        if (System.Math.Round(Camera.fieldOfView, 2) == 60)
+                        {
+                            Camera.fieldOfView = 60;
+                        }
+                    }
+
                 }
                 if (Input.GetKeyDown(KeyCode.F12))
                 {

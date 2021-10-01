@@ -994,6 +994,7 @@ MonoBehaviour:
   InteractionProgress: {fileID: 0}
   interactionHoldGO: {fileID: 0}
   interactionClickGO: {fileID: 0}
+  FreecamPrefab: {fileID: 0}
 --- !u!143 &163433185
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2690,6 +2691,7 @@ MonoBehaviour:
   InteractionProgress: {fileID: 1989298277}
   interactionHoldGO: {fileID: 1989298275}
   interactionClickGO: {fileID: 708043755}
+  FreecamPrefab: {fileID: 3719973957442472455, guid: 87697fbcfdd7c144e990c0d18712aa77, type: 3}
 --- !u!143 &779505904
 CharacterController:
   m_ObjectHideFlags: 0

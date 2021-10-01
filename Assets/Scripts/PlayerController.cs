@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
     public GameObject interactionHoldGO;
     public GameObject interactionClickGO;
 
+    public GameObject FreecamPrefab;
+
     void Start()
     {
         Camera = this.gameObject.GetComponentInChildren<Camera>();
@@ -135,6 +137,13 @@ public class PlayerController : MonoBehaviour
                 {
                     ScreenCapture.CaptureScreenshot(Application.dataPath + "/Screenshots/" + System.DateTime.Now.ToString("yy'-'MM'-'dd'-'hh'-'mm'-'ss") + ".png");
                     Debug.Log("Screenshot " + Application.dataPath + "/Screenshots/" + System.DateTime.Now.ToString("yy'-'MM'-'dd'-'hh'-'mm'-'ss") + ".png");
+                }
+                if(Input.GetKey(KeyCode.F3))
+                {
+                    if(Input.GetKeyDown(KeyCode.F))
+                    {
+                        Instantiate(FreecamPrefab, this.transform.position, Quaternion.identity);
+                    }
                 }
             }
             if (Playercontrol_enabled)
@@ -230,6 +239,13 @@ public class PlayerController : MonoBehaviour
                 {
                     ScreenCapture.CaptureScreenshot(Application.dataPath + "/Screenshots/" + System.DateTime.Now.ToString("yy'-'MM'-'dd'-'hh'-'mm'-'ss") + ".png");
                     Debug.Log("Screenshot " + Application.dataPath + "/Screenshots/" + System.DateTime.Now.ToString("yy'-'MM'-'dd'-'hh'-'mm'-'ss") + ".png");
+                }
+                if (Input.GetKey(KeyCode.F3))
+                {
+                    if (Input.GetKeyDown(KeyCode.F))
+                    {
+                        Instantiate(FreecamPrefab, this.transform.position, Quaternion.identity);
+                    }
                 }
             }
             if (Playercontrol_enabled)

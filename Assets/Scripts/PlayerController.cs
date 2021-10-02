@@ -142,7 +142,10 @@ public class PlayerController : MonoBehaviour
                 {
                     if(Input.GetKeyDown(KeyCode.F))
                     {
-                        Instantiate(FreecamPrefab, this.transform.position, Quaternion.identity);
+                        GameObject Freecam = Instantiate(FreecamPrefab, this.transform.position, Quaternion.identity) as GameObject;
+                        Playercontrol_enabled = false;
+                        Cameracontrol_enabled = false;
+                        Freecam.SendMessage("GetPlayer", this);
                     }
                 }
             }
@@ -244,7 +247,10 @@ public class PlayerController : MonoBehaviour
                 {
                     if (Input.GetKeyDown(KeyCode.F))
                     {
-                        Instantiate(FreecamPrefab, this.transform.position, Quaternion.identity);
+                        GameObject Freecam = Instantiate(FreecamPrefab, this.transform.position, Quaternion.identity) as GameObject;
+                        Playercontrol_enabled = false;
+                        Cameracontrol_enabled = false;
+                        Freecam.SendMessage("GetPlayer", this);
                     }
                 }
             }

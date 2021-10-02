@@ -3,7 +3,15 @@ guid: 19fbddab3e213684da8c45d9e0abf975
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Camera: {instanceID: 0}
+  - Controller: {instanceID: 0}
+  - GroundCheck: {instanceID: 0}
+  - Text: {instanceID: 0}
+  - InteractionProgress: {instanceID: 0}
+  - interactionHoldGO: {instanceID: 0}
+  - interactionClickGO: {instanceID: 0}
+  - FreecamPrefab: {fileID: 3719973957442472455, guid: 87697fbcfdd7c144e990c0d18712aa77, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

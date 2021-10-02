@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class FreecamController : MonoBehaviour
 {
-    GameObject Player;
+    PlayerController Controller;
     public void GetPlayer(GameObject ParsedPlayer)
     {
-        Player = ParsedPlayer;
+        Controller = ParsedPlayer.gameObject.GetComponent<PlayerController>();
+    }
+
     }
 }

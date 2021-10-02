@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
                         GameObject Freecam = Instantiate(FreecamPrefab, this.transform.position, Quaternion.identity) as GameObject;
                         Playercontrol_enabled = false;
                         Cameracontrol_enabled = false;
-                        Freecam.SendMessage("GetPlayer", this);
+                        Freecam.SendMessage("GetPlayer", this.gameObject);
                     }
                 }
             }
@@ -250,7 +250,7 @@ public class PlayerController : MonoBehaviour
                         GameObject Freecam = Instantiate(FreecamPrefab, this.transform.position, Quaternion.identity) as GameObject;
                         Playercontrol_enabled = false;
                         Cameracontrol_enabled = false;
-                        Freecam.SendMessage("GetPlayer", this);
+                        Freecam.SendMessage("GetPlayer", this.gameObject);
                     }
                 }
             }

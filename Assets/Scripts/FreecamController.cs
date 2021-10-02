@@ -10,5 +10,16 @@ public class FreecamController : MonoBehaviour
         Controller = ParsedPlayer.gameObject.GetComponent<PlayerController>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.F3))
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                Controller.Playercontrol_enabled = true;
+                Controller.Cameracontrol_enabled = true;
+                Destroy(this.gameObject);
+            }
+        }
     }
 }

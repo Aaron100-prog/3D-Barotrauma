@@ -34,7 +34,7 @@ public class FreecamController : MonoBehaviour
         yRotation = Mathf.Clamp(yRotation, -90f, 90f);
         this.transform.localRotation = Quaternion.Euler(yRotation, xRotation, 0f);
         //Movement
-        if(Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             if (Input.GetKey(KeyCode.W))
             {
@@ -52,25 +52,42 @@ public class FreecamController : MonoBehaviour
             {
                 transform.position = transform.position + (transform.right * fastflyingspeed * Time.deltaTime);
             }
+            if (Input.GetKey(KeyCode.Space))
+            {
+                transform.position = transform.position + (transform.up * fastflyingspeed * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                transform.position = transform.position + (-transform.up * fastflyingspeed * Time.deltaTime);
+            }
         }
         else
-        if (Input.GetKey(KeyCode.W))
         {
-            transform.position = transform.position + (transform.forward * flyingspeed * Time.deltaTime);
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.position = transform.position + (transform.forward * flyingspeed * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                transform.position = transform.position + (-transform.forward * flyingspeed * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.position = transform.position + (-transform.right * flyingspeed * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.position = transform.position + (transform.right * flyingspeed * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.Space))
+            {
+                transform.position = transform.position + (transform.up * flyingspeed * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                transform.position = transform.position + (-transform.up * flyingspeed * Time.deltaTime);
+            }
         }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position = transform.position + (-transform.forward * flyingspeed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position = transform.position + (-transform.right * flyingspeed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position = transform.position + (transform.right * flyingspeed * Time.deltaTime);
-        }
-
 
         if (Input.GetKey(KeyCode.F3))
         {

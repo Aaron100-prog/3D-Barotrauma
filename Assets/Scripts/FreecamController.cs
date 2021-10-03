@@ -24,12 +24,32 @@ public class FreecamController : MonoBehaviour
 
     private void Update()
     {
+        //Camera
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
         yRotation -= mouseY;
         xRotation += mouseX;
         yRotation = Mathf.Clamp(yRotation, -90f, 90f);
         this.transform.localRotation = Quaternion.Euler(yRotation, xRotation, 0f);
+        //Movement
+
+        if(Input.GetKey(KeyCode.W))
+        {
+            transform.position = transform.position + (transform.forward * 2f * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.position = transform.position + (-transform.forward * 2f * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.position = transform.position + (-transform.right * 2f * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.position = transform.position + (transform.right * 2f * Time.deltaTime);
+        }
+
 
         if (Input.GetKey(KeyCode.F3))
         {

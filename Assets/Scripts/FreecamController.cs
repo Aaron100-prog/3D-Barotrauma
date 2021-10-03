@@ -5,7 +5,7 @@ using UnityEngine;
 public class FreecamController : MonoBehaviour
 {
     [Header("Camera Movement")]
-    private float sensitivity = 180f;
+    private float sensitivity = 210f;
     [HideInInspector]
     private float yRotation = 0f;
     private float xRotation = 0f;

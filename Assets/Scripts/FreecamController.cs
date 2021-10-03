@@ -6,6 +6,8 @@ public class FreecamController : MonoBehaviour
 {
     [Header("Camera Movement")]
     private float sensitivity = 210f;
+    private float flyingspeed = 2f;
+    private float fastflyingspeed = 7f;
     [HideInInspector]
     private float yRotation = 0f;
     private float xRotation = 0f;
@@ -32,22 +34,41 @@ public class FreecamController : MonoBehaviour
         yRotation = Mathf.Clamp(yRotation, -90f, 90f);
         this.transform.localRotation = Quaternion.Euler(yRotation, xRotation, 0f);
         //Movement
-
-        if(Input.GetKey(KeyCode.W))
+        if(Input.GetKey(KeyCode.LeftShift))
         {
-            transform.position = transform.position + (transform.forward * 2f * Time.deltaTime);
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.position = transform.position + (transform.forward * fastflyingspeed * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                transform.position = transform.position + (-transform.forward * fastflyingspeed * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.position = transform.position + (-transform.right * fastflyingspeed * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.position = transform.position + (transform.right * fastflyingspeed * Time.deltaTime);
+            }
+        }
+        else
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.position = transform.position + (transform.forward * flyingspeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position = transform.position + (-transform.forward * 2f * Time.deltaTime);
+            transform.position = transform.position + (-transform.forward * flyingspeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.position = transform.position + (-transform.right * 2f * Time.deltaTime);
+            transform.position = transform.position + (-transform.right * flyingspeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position = transform.position + (transform.right * 2f * Time.deltaTime);
+            transform.position = transform.position + (transform.right * flyingspeed * Time.deltaTime);
         }
 
 

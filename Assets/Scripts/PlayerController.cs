@@ -327,14 +327,14 @@ public class PlayerController : MonoBehaviour
         switch (interactable.interactiontype)
         {
             case Interactable.Interactiontype.CLICK:
-                if(Input.GetKeyDown(KeyCode.E))
+                if(Input.GetKeyDown(KeyCode.F))
                 {
                         interactable.Interact();
                         
                 }
                 break;
             case Interactable.Interactiontype.HOLD:
-                if (Input.GetKey(KeyCode.E))
+                if (Input.GetKey(KeyCode.F))
                 {
                     interactable.IncreaseHOLDTime();
                     if(interactable.GetHOLDTime() > 1f)
@@ -350,7 +350,7 @@ public class PlayerController : MonoBehaviour
                 InteractionProgress.fillAmount = interactable.GetHOLDTime();
                 break;
             case Interactable.Interactiontype.OBJECT:
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.F))
                 {
                     interactable.Interact();
                     this.transform.SetParent(interactable.transform.parent.transform, true);

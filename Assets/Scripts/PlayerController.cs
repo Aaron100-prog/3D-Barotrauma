@@ -356,7 +356,20 @@ public class PlayerController : MonoBehaviour
                     this.transform.SetParent(interactable.transform.parent.transform, true);
                     Playercontrol_enabled = false;
                     Controller.enabled = false;
-                    this.transform.position = interactable.OBJECT_ForcePosition();
+
+                    if (interactable.UseX() == true)
+                    {
+                        this.transform.position = new Vector3 (interactable.OBJECT_ForcePosition().x, this.transform.position.y, this.transform.position.z);
+                    }
+                    if (interactable.UseY() == true)
+                    {
+                        this.transform.position = new Vector3(this.transform.position.x, interactable.OBJECT_ForcePosition().y, this.transform.position.z);
+                    }
+                    if (interactable.UseZ() == true)
+                    {
+                        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, interactable.OBJECT_ForcePosition().z);
+                    }
+
                 }
                 break;
         }

@@ -19,4 +19,18 @@ public class ClickInteractable : Interactable
         throw new System.NotImplementedException();
     }
 
+    public override bool UseX()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override bool UseY()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override bool UseZ()
+    {
+        throw new System.NotImplementedException();
+    }
 }

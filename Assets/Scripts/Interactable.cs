@@ -25,4 +25,7 @@ public abstract class Interactable : MonoBehaviour
 
     //OBJECT
     public abstract Vector3 OBJECT_ForcePosition();
+    public abstract bool UseX();
+    public abstract bool UseY();
+    public abstract bool UseZ();
 }

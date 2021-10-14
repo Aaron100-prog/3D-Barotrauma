@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float sensitivity = 180f;
     [HideInInspector]
     private float yRotation = 0f;
+    private float xRotation = 0f;
     public bool Cameracontrol_enabled = true;
     [HideInInspector]
     public Camera Camera;
@@ -44,6 +45,9 @@ public class PlayerController : MonoBehaviour
     public GameObject interactionClickGO;
 
     public GameObject FreecamPrefab;
+
+    public bool altlookactiv;
+    
 
     void Start()
     {
@@ -97,10 +101,22 @@ public class PlayerController : MonoBehaviour
             {
                 float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
                 float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
-                yRotation -= mouseY;
-                yRotation = Mathf.Clamp(yRotation, -90f, 90f);
-                Camera.transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
-                this.transform.Rotate(Vector3.up * mouseX);
+                if(!altlookactiv)
+                {
+                    yRotation -= mouseY;
+                    yRotation = Mathf.Clamp(yRotation, -90f, 90f);
+                    Camera.transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
+                    this.transform.Rotate(Vector3.up * mouseX);
+                }
+                else
+                {
+                    yRotation -= mouseY;
+                    yRotation = Mathf.Clamp(yRotation, -80f, 90f);
+                    xRotation -= mouseX;
+                    xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+                    Camera.transform.localRotation = Quaternion.Euler(yRotation, xRotation, 0f);
+                }
+                
 
                 if(Input.GetMouseButtonDown(2))
                 {
@@ -205,7 +221,19 @@ public class PlayerController : MonoBehaviour
             {
                 float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
                 float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
-                this.transform.Rotate(Vector3.left * mouseY + Vector3.up * mouseX);
+                if (!altlookactiv)
+                {
+                    this.transform.Rotate(Vector3.left * mouseY + Vector3.up * mouseX);
+                }
+                else
+                {
+                    yRotation -= mouseY;
+                    yRotation = Mathf.Clamp(yRotation, -80f, 90f);
+                    xRotation -= mouseX;
+                    xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+                    Camera.transform.localRotation = Quaternion.Euler(yRotation, xRotation, 0f);
+                }
+                
 
                 if (Input.GetMouseButtonDown(2))
                 {

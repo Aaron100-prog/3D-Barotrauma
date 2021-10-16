@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
     public GameObject FreecamPrefab;
 
     public bool altlookactiv;
+    Quaternion savedaltlook;
     
 
     void Start()
@@ -148,6 +149,19 @@ public class PlayerController : MonoBehaviour
                         }
                     }
                     
+                }
+                if (Input.GetKeyDown(KeyCode.LeftAlt))
+                {
+                    altlookactiv = true;
+                    yRotation = 0f;
+                    xRotation = 0f;
+                }
+                if (Input.GetKeyUp(KeyCode.LeftAlt))
+                {
+                    altlookactiv = false;
+                    Camera.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                    yRotation = 0f;
+                    xRotation = 0f;
                 }
                 if (Input.GetKeyDown(KeyCode.F12))
                 {
@@ -265,6 +279,19 @@ public class PlayerController : MonoBehaviour
                         }
                     }
 
+                }
+                if (Input.GetKeyDown(KeyCode.LeftAlt))
+                {
+                    altlookactiv = true;
+                    yRotation = 0f;
+                    xRotation = 0f;
+                }
+                if (Input.GetKeyUp(KeyCode.LeftAlt))
+                {
+                    altlookactiv = false;
+                    Camera.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                    yRotation = 0f;
+                    xRotation = 0f;
                 }
                 if (Input.GetKeyDown(KeyCode.F12))
                 {

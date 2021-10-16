@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public float runspeed = 4f;
     public float fallspeed = -10f;
 
-    public Transform GroundCheck;
+    private Transform GroundCheck;
     public LayerMask GroundMask;
     public float GroundDistance = 0.4f;
     private bool onGround;
@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
     {
         Camera = this.gameObject.GetComponentInChildren<Camera>();
         Controller = this.gameObject.GetComponent<CharacterController>();
+        GroundCheck = this.transform.Find("Groundcheck");
         interactionHoldGO.SetActive(false);
         interactionClickGO.SetActive(false);
         Text.text = "";

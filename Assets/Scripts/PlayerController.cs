@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
                 {
                     yRotation -= mouseY;
                     yRotation = Mathf.Clamp(yRotation, -80f, 90f);
-                    xRotation -= mouseX;
+                    xRotation += mouseX;
                     xRotation = Mathf.Clamp(xRotation, -90f, 90f);
                     Camera.transform.localRotation = Quaternion.Euler(yRotation, xRotation, 0f);
                 }
@@ -243,7 +243,7 @@ public class PlayerController : MonoBehaviour
                 {
                     yRotation -= mouseY;
                     yRotation = Mathf.Clamp(yRotation, -80f, 90f);
-                    xRotation -= mouseX;
+                    xRotation += mouseX;
                     xRotation = Mathf.Clamp(xRotation, -90f, 90f);
                     Camera.transform.localRotation = Quaternion.Euler(yRotation, xRotation, 0f);
                 }

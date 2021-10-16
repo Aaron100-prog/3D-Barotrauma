@@ -8,7 +8,7 @@ public abstract class Interactable : MonoBehaviour
     {
         CLICK,
         HOLD,
-        OBJECT,
+        LADDER,
     }
     //CLICK
     public Interactiontype interactiontype;
@@ -23,7 +23,7 @@ public abstract class Interactable : MonoBehaviour
 
     public float GetHOLDTime() => HOLDTime;
 
-    //OBJECT
+    //LADDER
     public abstract Vector3 OBJECT_ForcePosition();
     public abstract bool UseX();
     public abstract bool UseY();

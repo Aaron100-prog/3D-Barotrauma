@@ -48,7 +48,8 @@ public class PlayerController : MonoBehaviour
 
     public bool altlookactiv;
     Quaternion savedaltlook;
-    
+
+    private bool OnLadder;
 
     void Start()
     {
@@ -61,14 +62,25 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Collider[] hitcollider = Physics.OverlapSphere(this.transform.position, 0f, HullMask, QueryTriggerInteraction.Collide); //TODO: OverlapCapsule benutzen damit der gesamten Charakter geprüft wird, und so niemals mit Arm/Bein/Kopf außerhalb einer Hülle ist, aber noch behandelt wird als wäre er in einer hülle.
-        if(hitcollider.Length != 0 && swimming == true)
+        if (!OnLadder)
         {
-            EnterHull(hitcollider[0]);
+            Collider[] hitcollider = Physics.OverlapSphere(this.transform.position, 0f, HullMask, QueryTriggerInteraction.Collide); //TODO: OverlapCapsule benutzen damit der gesamten Charakter geprüft wird, und so niemals mit Arm/Bein/Kopf außerhalb einer Hülle ist, aber noch behandelt wird als wäre er in einer hülle.
+            if (hitcollider.Length != 0 && swimming == true)
+            {
+                EnterHull(hitcollider[0]);
+            }
+            else if (hitcollider.Length == 0 && swimming == false)
+            {
+                ExitHull();
+            }
         }
-        else if(hitcollider.Length == 0 && swimming == false)
+        else
         {
-            ExitHull();
+            float y = Input.GetAxis("Vertical") * Time.deltaTime * 2;
+            transform.Translate(0f, y, 0f);
+            Vector3 clampPosition = transform.localPosition;
+            clampPosition.y = Mathf.Clamp(clampPosition.y, -1, 1);
+            transform.localPosition = clampPosition;
         }
 
         Ray ray = Camera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));
@@ -404,13 +416,14 @@ public class PlayerController : MonoBehaviour
                 }
                 InteractionProgress.fillAmount = interactable.GetHOLDTime();
                 break;
-            case Interactable.Interactiontype.OBJECT:
+            case Interactable.Interactiontype.LADDER:
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     interactable.Interact();
                     this.transform.SetParent(interactable.transform.parent.transform, true);
                     Playercontrol_enabled = false;
                     Controller.enabled = false;
+                    OnLadder = true;
 
                     if (interactable.UseX() == true)
                     {
@@ -428,7 +441,6 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
         }
-
     }
 
 

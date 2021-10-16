@@ -82,30 +82,39 @@ public class PlayerController : MonoBehaviour
             clampPosition.y = Mathf.Clamp(clampPosition.y, -1, 1);
             transform.localPosition = clampPosition;
         }
-
-        Ray ray = Camera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));
-        RaycastHit hit;
-        bool success = false;
-        if (Physics.Raycast(ray, out hit, 4f))
+        if(!OnLadder)
         {
-            Interactable interactable = hit.collider.GetComponent<Interactable>();
-
-            if(interactable != null)
+            Ray ray = Camera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));
+            RaycastHit hit;
+            bool success = false;
+            if (Physics.Raycast(ray, out hit, 4f))
             {
-                PerformInteraction(interactable);
-                Text.text = interactable.GetDescription();
-                success = true;
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
 
-                interactionHoldGO.SetActive(interactable.interactiontype == Interactable.Interactiontype.HOLD);
-                interactionClickGO.SetActive(interactable.interactiontype == Interactable.Interactiontype.CLICK);
-            }
+                if (interactable != null)
+                {
+                    PerformInteraction(interactable);
+                    Text.text = interactable.GetDescription();
+                    success = true;
 
-            if (!success)
-            {
-                Text.text = "";
-                interactionHoldGO.SetActive(false);
-                interactionClickGO.SetActive(false);
+                    interactionHoldGO.SetActive(interactable.interactiontype == Interactable.Interactiontype.HOLD);
+                    interactionClickGO.SetActive(interactable.interactiontype == Interactable.Interactiontype.CLICK);
+                }
+
+                if (!success)
+                {
+                    Text.text = "";
+                    interactionHoldGO.SetActive(false);
+                    interactionClickGO.SetActive(false);
+                }
             }
+        }
+        else if(OnLadder && Input.GetKeyDown(KeyCode.F))
+        {
+            this.transform.SetParent(this.transform.parent.parent.parent, true);
+            Playercontrol_enabled = true;
+            Controller.enabled = true;
+            OnLadder = false;
         }
 
         if(swimming == false)

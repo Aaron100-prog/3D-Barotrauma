@@ -369,14 +369,6 @@ public class PlayerController : MonoBehaviour
                 
             }
         }
-        if(Input.GetKeyDown("c"))
-        {
-            EnterHull(null);
-        }
-        if (Input.GetKeyDown("v"))
-        {
-            ExitHull();
-        }
     }
 
     public void EnterHull(Collider HullParent)

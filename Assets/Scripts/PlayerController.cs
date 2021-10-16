@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviour
 
                     interactionHoldGO.SetActive(interactable.interactiontype == Interactable.Interactiontype.HOLD);
                     interactionClickGO.SetActive(interactable.interactiontype == Interactable.Interactiontype.CLICK);
+                    interactionClickGO.SetActive(interactable.interactiontype == Interactable.Interactiontype.LADDER);
                 }
 
                 if (!success)

@@ -21,9 +21,9 @@ public class RestrictionButton : Interactable
     public GameObject ActivatedObject;
 
     [HideInInspector]
-    public string[] PlayerInvalidAccess;
+    public string[] passedPlayerInvalidAccess;
     [HideInInspector]
-    public string[] PlayerValidAccess;
+    public string[] passedPlayerValidAccess;
 
     public override string GetDescription()
     {

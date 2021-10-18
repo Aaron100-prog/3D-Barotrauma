@@ -51,6 +51,9 @@ public class PlayerController : MonoBehaviour
 
     private bool OnLadder;
 
+    [Header("Access")]
+    public string[] PlayerAccess;
+
     void Start()
     {
         Camera = this.gameObject.GetComponentInChildren<Camera>();

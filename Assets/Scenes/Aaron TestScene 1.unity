@@ -3453,7 +3453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c632956752bb2246be47e1719138ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactiontype: 0
+  interactiontype: 3
   ButtonDescription: "T\xFCr"
   CheckallInvalidAccess: 0
   ButtonInvalidAccess: []
@@ -3461,6 +3461,7 @@ MonoBehaviour:
   ButtonValidAccess: []
   ActivatedObject: {fileID: 1682756071}
   passedPlayerAccess: []
+  renderer: {fileID: 0}
 --- !u!65 &1179443238
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5418,7 +5419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c632956752bb2246be47e1719138ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactiontype: 0
+  interactiontype: 3
   ButtonDescription: "T\xFCr"
   CheckallInvalidAccess: 0
   ButtonInvalidAccess: []
@@ -5426,6 +5427,7 @@ MonoBehaviour:
   ButtonValidAccess: []
   ActivatedObject: {fileID: 1682756071}
   passedPlayerAccess: []
+  renderer: {fileID: 0}
 --- !u!65 &1838152332
 BoxCollider:
   m_ObjectHideFlags: 0

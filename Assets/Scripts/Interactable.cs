@@ -9,6 +9,7 @@ public abstract class Interactable : MonoBehaviour
         CLICK,
         HOLD,
         LADDER,
+        BUTTON,
     }
     //CLICK
     public Interactiontype interactiontype;

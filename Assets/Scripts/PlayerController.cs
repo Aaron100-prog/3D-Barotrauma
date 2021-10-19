@@ -446,6 +446,13 @@ public class PlayerController : MonoBehaviour
 
                 }
                 break;
+            case Interactable.Interactiontype.BUTTON:
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    interactable.SendMessage("GetPlayerAccess", PlayerAccess);
+                    interactable.Interact();
+                }
+                break;
         }
     }
 

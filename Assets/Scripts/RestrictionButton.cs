@@ -43,6 +43,12 @@ public class RestrictionButton : Interactable
     {
         ActivatedObject.SendMessage("Activate");
         StartCoroutine(AccessgrantedCoroutine());
+        passedPlayerAccess = null;
+    }
+
+    public void GetPlayerAccess(string[] passedAccess)
+    {
+        passedPlayerAccess = passedAccess;
     }
 
     IEnumerator AccessgrantedCoroutine()

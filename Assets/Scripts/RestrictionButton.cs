@@ -23,6 +23,17 @@ public class RestrictionButton : Interactable
     [HideInInspector]
     public string[] passedPlayerAccess;
 
+
+    [HideInInspector]
+    public new MeshRenderer renderer;
+    Color original;
+
+    void Start()
+    {
+        renderer = this.transform.GetChild(0).GetComponent<MeshRenderer>();
+        original = renderer.material.GetColor("_Color");
+    }
+
     public override string GetDescription()
     {
         return ButtonDescription;
@@ -31,7 +42,19 @@ public class RestrictionButton : Interactable
     public override void Interact()
     {
         ActivatedObject.SendMessage("Activate");
+        StartCoroutine(AccessgrantedCoroutine());
     }
+
+    IEnumerator AccessgrantedCoroutine()
+    {
+        renderer.material.SetColor("_Color", Color.green);
+
+        yield return new WaitForSeconds(3);
+
+        renderer.material.SetColor("_Color", new Color(0.8196079f, 0.8196079f, 0.8196079f));
+    }
+
+
 
     public override Vector3 OBJECT_ForcePosition()
     {

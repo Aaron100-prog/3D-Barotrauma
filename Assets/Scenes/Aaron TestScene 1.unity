@@ -996,6 +996,7 @@ MonoBehaviour:
   FreecamPrefab: {fileID: 0}
   altlookactiv: 0
   PlayerAccess: []
+  DebugMenu: {fileID: 0}
 --- !u!143 &163433185
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3024,7 +3025,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &706893634
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3279,6 +3280,7 @@ MonoBehaviour:
   FreecamPrefab: {fileID: 3719973957442472455, guid: 87697fbcfdd7c144e990c0d18712aa77, type: 3}
   altlookactiv: 0
   PlayerAccess: []
+  DebugMenu: {fileID: 706893633}
 --- !u!143 &779505904
 CharacterController:
   m_ObjectHideFlags: 0

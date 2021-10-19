@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
     [Header("Access")]
     public string[] PlayerAccess;
 
+    public GameObject DebugMenu;
+
     void Start()
     {
         Camera = this.gameObject.GetComponentInChildren<Camera>();
@@ -203,6 +205,10 @@ public class PlayerController : MonoBehaviour
                         Cameracontrol_enabled = false;
                         Freecam.SendMessage("GetPlayer", this.gameObject);
                     }
+                    if (Input.GetKeyDown(KeyCode.I))
+                    {
+                        DebugMenu.SetActive(!DebugMenu.activeSelf);
+                    }
                 }
             }
             if (Playercontrol_enabled)
@@ -332,6 +338,10 @@ public class PlayerController : MonoBehaviour
                         Playercontrol_enabled = false;
                         Cameracontrol_enabled = false;
                         Freecam.SendMessage("GetPlayer", this.gameObject);
+                    }
+                    if (Input.GetKeyDown(KeyCode.I))
+                    {
+                        DebugMenu.SetActive(!DebugMenu.activeSelf);
                     }
                 }
             }

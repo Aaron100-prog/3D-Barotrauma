@@ -19,7 +19,7 @@ public class Ladder : Interactable
 
     public override void Interact()
     {
-        Debug.Log("Interacted (CLICK)");
+        //Debug.Log("Interacted (CLICK)");
     }
 
     public override Vector3 OBJECT_ForcePosition()

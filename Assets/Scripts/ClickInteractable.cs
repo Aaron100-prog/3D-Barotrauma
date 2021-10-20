@@ -10,7 +10,7 @@ public class ClickInteractable : Interactable
     }
     public override void Interact()
     {
-        Debug.Log("Interacted (CLICK)");
+        //Debug.Log("Interacted (CLICK)");
     }
 
     public override string GetDescription()

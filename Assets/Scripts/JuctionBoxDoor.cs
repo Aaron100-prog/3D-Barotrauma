@@ -5,6 +5,10 @@ using UnityEngine;
 public class JuctionBoxDoor : Interactable
 {
     Animator animator;
+    void Awake()
+    {
+        interactiontype = Interactiontype.HOLD;
+    }
     void Start()
     {
         animator = GetComponent<Animator>();

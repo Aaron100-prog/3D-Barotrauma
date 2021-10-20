@@ -28,6 +28,10 @@ public class RestrictionButton : Interactable
     public new MeshRenderer renderer;
     Color original;
 
+    void Awake()
+    {
+        interactiontype = Interactiontype.BUTTON;
+    }
     void Start()
     {
         renderer = this.transform.GetChild(0).GetComponent<MeshRenderer>();

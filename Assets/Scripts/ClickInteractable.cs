@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class ClickInteractable : Interactable
 {
+    void Awake()
+    {
+        interactiontype = Interactiontype.CLICK;
+    }
     public override void Interact()
     {
         Debug.Log("Interacted (CLICK)");

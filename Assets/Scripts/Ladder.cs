@@ -8,6 +8,10 @@ public class Ladder : Interactable
     public bool Use_X = false;
     public bool Use_Y = false;
     public bool Use_Z = false;
+    void Awake()
+    {
+        interactiontype = Interactiontype.LADDER;
+    }
     public override string GetDescription()
     {
         return "Interagieren";

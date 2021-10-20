@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -78,6 +79,21 @@ public class PlayerController : MonoBehaviour
             else if (hitcollider.Length == 0 && swimming == false)
             {
                 ExitHull();
+            }
+            if(DebugMenu.activeSelf && hitcollider.Length != 0)
+            {
+                Hull hull = hitcollider[0].gameObject.GetComponent<Hull>();
+                if(hull != null)
+                {
+                    DebugMenu.transform.Find("Hull Info").Find("Hull Name Info").GetComponent<TextMeshProUGUI>().text = hull.gameObject.name;
+                    DebugMenu.transform.Find("Hull Info").Find("Hull Oxygen Info").GetComponent<TextMeshProUGUI>().text = hull.OxygenInHull.ToString() + "%";
+                    DebugMenu.transform.Find("Hull Info").Find("Hull Pressure Info").GetComponent<TextMeshProUGUI>().text = hull.PressureInHull.ToString() + "%";
+                    DebugMenu.transform.Find("Hull Info").Find("Hull Water Info").GetComponent<TextMeshProUGUI>().text = hull.WaterLevelInHull.ToString() + "%";
+                }
+                else
+                {
+                    DebugMenu.transform.Find("Hull Info").Find("Hull Name Info").GetComponent<TextMeshProUGUI>().text = "Hull Script fehlt!";
+                }
             }
         }
         else

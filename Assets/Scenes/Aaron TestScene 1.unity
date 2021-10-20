@@ -1110,7 +1110,7 @@ GameObject:
   - component: {fileID: 203497538}
   - component: {fileID: 203497537}
   m_Layer: 5
-  m_Name: Hull Name (1)
+  m_Name: Hull Name Info
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1242,6 +1242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 230027771}
   - component: {fileID: 230027772}
+  - component: {fileID: 230027773}
   m_Layer: 9
   m_Name: Hull
   m_TagString: Untagged
@@ -1276,6 +1277,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8538815, y: 2.2389379, z: 2.7121215}
   m_Center: {x: -0.42694086, y: 0.5809541, z: -0.048133254}
+--- !u!114 &230027773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230027770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efef4c892474a5e47aa817a4398d8edf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OxygenInHull: 100
+  WaterLevelInHull: 0
+  PressureInHull: 0
 --- !u!4 &252674600 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b9a4b4b4be59ebf45957f137cb6578ea, type: 3}
@@ -3409,7 +3425,7 @@ GameObject:
   - component: {fileID: 827216410}
   - component: {fileID: 827216409}
   m_Layer: 5
-  m_Name: Hull Oxygen (1)
+  m_Name: Hull Oxygen Info
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5207,7 +5223,7 @@ GameObject:
   - component: {fileID: 1504913499}
   - component: {fileID: 1504913498}
   m_Layer: 5
-  m_Name: Hull Pressure (1)
+  m_Name: Hull Pressure Info
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6832,7 +6848,7 @@ GameObject:
   - component: {fileID: 1911313134}
   - component: {fileID: 1911313133}
   m_Layer: 5
-  m_Name: Hull Water (1)
+  m_Name: Hull Water Info
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

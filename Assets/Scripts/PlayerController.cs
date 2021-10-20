@@ -119,9 +119,21 @@ public class PlayerController : MonoBehaviour
                     Text.text = interactable.GetDescription();
                     success = true;
 
-                    interactionHoldGO.SetActive(interactable.interactiontype == Interactable.Interactiontype.HOLD);
-                    interactionClickGO.SetActive(interactable.interactiontype == Interactable.Interactiontype.CLICK);
-                    interactionClickGO.SetActive(interactable.interactiontype == Interactable.Interactiontype.LADDER);
+                    switch (interactable.interactiontype)
+                    {
+                        case Interactable.Interactiontype.CLICK:
+                            interactionClickGO.SetActive(true);
+                            break;
+                        case Interactable.Interactiontype.HOLD:
+                            interactionHoldGO.SetActive(true);
+                            break;
+                        case Interactable.Interactiontype.LADDER:
+                            interactionClickGO.SetActive(true);
+                            break;
+                        case Interactable.Interactiontype.BUTTON:
+                            interactionClickGO.SetActive(true);
+                            break;
+                    }
                 }
 
                 if (!success)

@@ -100,7 +100,6 @@ public class PlayerController : MonoBehaviour
                             if(Oxygen > 100) //Wenn der Charakter mehr als 100 Sauerstoff hat, zusätzlichen Sauerstoff von Charakter nehmen und der Hülle hinzufügen
                             {
                                 float difference3 = Oxygen - 100f;
-                                Debug.Log(difference3);
                                 Oxygen -= difference3;
                                 hull.OxygenInHull += difference3;
                             }

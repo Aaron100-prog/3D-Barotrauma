@@ -55,7 +55,14 @@ public class PlayerController : MonoBehaviour
     [Header("Access")]
     public string[] PlayerAccess;
 
+    [Header("Stats")]
+    public float Oxygen = 100f;
+
+    [Header("Debug")]
     public GameObject DebugMenu;
+    [SerializeField]
+    private bool UseOxygen = true;
+    private bool MaskOn = false;
 
     void Start()
     {
@@ -69,6 +76,37 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (UseOxygen)
+        {
+            Collider[] hitcollider = Physics.OverlapSphere(this.transform.position, 0f, HullMask, QueryTriggerInteraction.Collide);
+            if (!MaskOn && hitcollider.Length != 0)
+            {
+                Hull hull = hitcollider[0].gameObject.GetComponent<Hull>();
+                if(hull != null)
+                {
+                    //Versuchen Sauerstoff aus Hülle nehmen
+                    float difference = hull.OxygenInHull - 2f;
+                    if(difference >= 0)
+                    {
+                        hull.OxygenInHull -= 2f * Time.deltaTime;
+                    }
+                    else //Wenn nicht genügend Sauerstoff in der Hülle ist, verbleibenden Sauerstoff aus Hülle nehmen und restlichen vom Charakter
+                    {
+                        hull.OxygenInHull -= 2f + difference;
+                        Oxygen += difference * Time.deltaTime;
+                    }
+                }
+                else //Wenn die Hülle keinen Hüllen Script besitzt, Sauerstoff direkt vom Charakter nehmen
+                {
+                    Oxygen -= 2f * Time.deltaTime;
+                }
+                
+            }
+            else //Wenn der Charakter sich nicht in einer Hülle befindet, Sauerstoff direkt vom Charakter nehmen
+            {
+                Oxygen -= 2f * Time.deltaTime;
+            }
+        }
         if (!OnLadder)
         {
             Collider[] hitcollider = Physics.OverlapSphere(this.transform.position, 0f, HullMask, QueryTriggerInteraction.Collide); //TODO: OverlapCapsule benutzen damit der gesamten Charakter geprüft wird, und so niemals mit Arm/Bein/Kopf außerhalb einer Hülle ist, aber noch behandelt wird als wäre er in einer hülle.

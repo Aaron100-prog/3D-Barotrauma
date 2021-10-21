@@ -84,11 +84,28 @@ public class PlayerController : MonoBehaviour
                 Hull hull = hitcollider[0].gameObject.GetComponent<Hull>();
                 if(hull != null)
                 {
-                    //Versuchen Sauerstoff aus Hülle nehmen
+                    //Versuchen Sauerstoff aus Hülle zunehmen
                     float difference = hull.OxygenInHull - 2f;
                     if(difference >= 0)
                     {
                         hull.OxygenInHull -= 2f * Time.deltaTime;
+                        if (Oxygen < 100 && hull.OxygenInHull > 0) //Wenn der Charakter weniger als 100 Sauerstoff hat, zusätzlich Sauerstoff aus Hülle entnehmen
+                        {
+                            float difference2 = hull.OxygenInHull - 5f;
+                            if (difference2 >= 0)
+                            {
+                                hull.OxygenInHull -= 5f * Time.deltaTime;
+                                Oxygen += 5f * Time.deltaTime;
+                            }
+                            if(Oxygen > 100) //Wenn der Charakter mehr als 100 Sauerstoff hat, zusätzlichen Sauerstoff von Charakter nehmen und der Hülle hinzufügen
+                            {
+                                float difference3 = Oxygen - 100f;
+                                Debug.Log(difference3);
+                                Oxygen -= difference3;
+                                hull.OxygenInHull += difference3;
+                            }
+                        }
+
                     }
                     else //Wenn nicht genügend Sauerstoff in der Hülle ist, verbleibenden Sauerstoff aus Hülle nehmen und restlichen vom Charakter
                     {
@@ -98,6 +115,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else //Wenn die Hülle keinen Hüllen Script besitzt, Sauerstoff direkt vom Charakter nehmen
                 {
+                    Debug.Log(hitcollider[0].gameObject.name + " besitzt keinen Hüllen Script!");
                     Oxygen -= 2f * Time.deltaTime;
                 }
                 

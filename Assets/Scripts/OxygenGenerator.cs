@@ -4,34 +4,42 @@ using UnityEngine;
 
 public class OxygenGenerator : MonoBehaviour
 {
+    public int ID;
     public float power = 100f;
 
-    public Fan[] Fans;
+    public List<Fan> FanswithID;
 
     public void Start()
     {
-        Fans = transform.parent.GetComponentsInChildren<Fan>();
+        Fan[] AllFans = transform.parent.GetComponentsInChildren<Fan>();
+        for (int i = 0; i < AllFans.Length; i++)
+        {
+            if (AllFans[i].OxyGenerator_ID == ID)
+            {
+                FanswithID.Add(AllFans[i]);
+            }
+        }
     }
 
     public void Update()
     {
         if (power > 0f)
         {
-            for(int i = 0; i < Fans.Length; i++)
+            for(int i = 0; i < FanswithID.Count; i++)
             {
-                if(!Fans[i].active)
+                if(!FanswithID[i].active)
                 {
-                    Fans[i].Changetoactive();
+                    FanswithID[i].Changetoactive();
                 }
             }
         }
         else
         {
-            for (int i = 0; i < Fans.Length; i++)
+            for (int i = 0; i < FanswithID.Count; i++)
             {
-                if (Fans[i].active)
+                if (FanswithID[i].active)
                 {
-                    Fans[i].Changetoinactive();
+                    FanswithID[i].Changetoinactive();
                 }
             }
         }

@@ -46,12 +46,12 @@ public class Fan : MonoBehaviour
         }
     }
 
-    void Changetoactive()
+    public void Changetoactive()
     {
         animator.SetBool("Is_Active", true);
         active = true;
     }
-    void Changetoinactive()
+    public void Changetoinactive()
     {
         animator.SetBool("Is_Active", false);
         active = false;

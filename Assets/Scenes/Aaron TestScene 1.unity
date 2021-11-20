@@ -1291,8 +1291,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efef4c892474a5e47aa817a4398d8edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxOxygenInHull: 1000
-  OxygenInHull: 1000
+  MaxOxygenInHull: 0
+  OxygenInHull: 0
   WaterLevelInHull: 0
   PressureInHull: 0
 --- !u!4 &252674600 stripped

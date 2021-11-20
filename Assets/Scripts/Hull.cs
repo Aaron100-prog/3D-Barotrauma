@@ -9,7 +9,6 @@ public class Hull : MonoBehaviour
     public float WaterLevelInHull = 0f;
     public float PressureInHull = 0f;
     float Volume;
-    BoxCollider coll;
 
     public void Start()
     {
@@ -17,7 +16,7 @@ public class Hull : MonoBehaviour
     }
     private void CalculateMaxOxygen()
     {
-        coll = GetComponent<BoxCollider>();
+        BoxCollider coll = GetComponent<BoxCollider>();
         MaxOxygenInHull = coll.size.x * coll.size.y * coll.size.z * 25f;
     }
 

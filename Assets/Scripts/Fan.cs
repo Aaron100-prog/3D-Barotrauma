@@ -6,6 +6,7 @@ public class Fan : MonoBehaviour
 {
     public int OxyGenerator_ID = 1;
 
+    public bool active = true;
     Animator animator;
     Hull thishull;
     public LayerMask HullMask;
@@ -27,6 +28,21 @@ public class Fan : MonoBehaviour
                 Debug.Log(gameObject.name + ": " + hitcollider[0].gameObject.name + " besitzt keinen Hüllen Script!");
             }
 
+        }
+    }
+    private void Update()
+    {
+        if(active)
+        {
+            if(thishull.OxygenInHull < thishull.MaxOxygenInHull - 5f)
+            {
+                thishull.OxygenInHull = thishull.OxygenInHull + 5f * Time.deltaTime;
+            }
+            else
+            {
+                float difference = thishull.MaxOxygenInHull - thishull.OxygenInHull;
+                thishull.OxygenInHull = thishull.OxygenInHull + difference;
+            }
         }
     }
 

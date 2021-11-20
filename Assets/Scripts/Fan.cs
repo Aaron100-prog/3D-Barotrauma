@@ -49,9 +49,11 @@ public class Fan : MonoBehaviour
     void Changetoactive()
     {
         animator.SetBool("Is_Active", true);
+        active = true;
     }
     void Changetoinactive()
     {
         animator.SetBool("Is_Active", false);
+        active = false;
     }
 }

@@ -996,7 +996,9 @@ MonoBehaviour:
   FreecamPrefab: {fileID: 0}
   altlookactiv: 0
   PlayerAccess: []
+  Oxygen: 100
   DebugMenu: {fileID: 0}
+  UseOxygen: 1
 --- !u!143 &163433185
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1289,7 +1291,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efef4c892474a5e47aa817a4398d8edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OxygenInHull: 100
+  MaxOxygenInHull: 1000
+  OxygenInHull: 1000
   WaterLevelInHull: 0
   PressureInHull: 0
 --- !u!4 &252674600 stripped
@@ -3296,7 +3299,9 @@ MonoBehaviour:
   FreecamPrefab: {fileID: 3719973957442472455, guid: 87697fbcfdd7c144e990c0d18712aa77, type: 3}
   altlookactiv: 0
   PlayerAccess: []
+  Oxygen: 100
   DebugMenu: {fileID: 706893633}
+  UseOxygen: 1
 --- !u!143 &779505904
 CharacterController:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public class Hull : MonoBehaviour
     private void CalculateMaxOxygen()
     {
         BoxCollider coll = GetComponent<BoxCollider>();
-        MaxOxygenInHull = coll.size.x * coll.size.y * coll.size.z * 25f;
+        MaxOxygenInHull = coll.size.x * coll.size.y * coll.size.z * 15f;
     }
 
     public void Fillroomwithoxy()

@@ -141,9 +141,9 @@ public class PlayerController : MonoBehaviour
                 if(hull != null)
                 {
                     DebugMenu.transform.Find("Hull Info").Find("Hull Name Info").GetComponent<TextMeshProUGUI>().text = hull.gameObject.name;
-                    DebugMenu.transform.Find("Hull Info").Find("Hull Oxygen Info").GetComponent<TextMeshProUGUI>().text = hull.OxygenInHull.ToString() + "%";
-                    DebugMenu.transform.Find("Hull Info").Find("Hull Pressure Info").GetComponent<TextMeshProUGUI>().text = hull.PressureInHull.ToString() + "%";
-                    DebugMenu.transform.Find("Hull Info").Find("Hull Water Info").GetComponent<TextMeshProUGUI>().text = hull.WaterLevelInHull.ToString() + "%";
+                    DebugMenu.transform.Find("Hull Info").Find("Hull Oxygen Info").GetComponent<TextMeshProUGUI>().text = Mathf.RoundToInt(hull.OxygenInHull / hull.MaxOxygenInHull*100).ToString() + "%";
+                    DebugMenu.transform.Find("Hull Info").Find("Hull Pressure Info").GetComponent<TextMeshProUGUI>().text = Mathf.RoundToInt(hull.PressureInHull / 100 * 100).ToString() + "%";
+                    DebugMenu.transform.Find("Hull Info").Find("Hull Water Info").GetComponent<TextMeshProUGUI>().text = Mathf.RoundToInt(hull.WaterLevelInHull / 100 * 100).ToString() + "%";
                 }
                 else
                 {

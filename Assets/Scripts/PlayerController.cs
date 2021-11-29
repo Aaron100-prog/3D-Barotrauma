@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
     public float Oxygen = 100f;
 
     [Header("Debug")]
+    [HideInInspector]
     public GameObject DebugMenu;
     [SerializeField]
     private bool UseOxygen = true;
@@ -72,6 +73,7 @@ public class PlayerController : MonoBehaviour
         interactionHoldGO.SetActive(false);
         interactionClickGO.SetActive(false);
         Text.text = "";
+        DebugMenu = GameObject.FindWithTag("Canvas").transform.Find("Debug").gameObject;
     }
 
     void Update()

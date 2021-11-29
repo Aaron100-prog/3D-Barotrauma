@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class FreecamController : MonoBehaviour
@@ -13,6 +14,7 @@ public class FreecamController : MonoBehaviour
     private float xRotation = 0f;
     [HideInInspector]
     public Camera Camera;
+    private GameObject canvas;
 
     PlayerController Controller;
     public void GetPlayer(GameObject ParsedPlayer)
@@ -23,6 +25,11 @@ public class FreecamController : MonoBehaviour
     {
         Camera = this.gameObject.GetComponent<Camera>();
     }
+    private void Start()
+    {
+        canvas = GameObject.FindWithTag("Canvas");
+    }
+    
 
     private void Update()
     {
@@ -89,12 +96,34 @@ public class FreecamController : MonoBehaviour
             }
         }
 
+        //attaching
+
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            if(transform.parent != null)
+            {
+                transform.SetParent(null, true);
+                canvas.transform.Find("Freecam Text").GetComponent<TextMeshProUGUI>().text = "";
+            }
+            else
+            {
+                Ray ray = Camera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, 10f))
+                {
+                    transform.SetParent(hit.transform, true);
+                    canvas.transform.Find("Freecam Text").GetComponent<TextMeshProUGUI>().text = "Teil von: " + hit.transform.name;
+                }
+            }
+        }
+
         if (Input.GetKey(KeyCode.F3))
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
                 Controller.Playercontrol_enabled = true;
                 Controller.Cameracontrol_enabled = true;
+                canvas.transform.Find("Freecam Text").GetComponent<TextMeshProUGUI>().text = "";
                 Destroy(this.gameObject);
             }
         }

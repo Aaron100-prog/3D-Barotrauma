@@ -525,20 +525,12 @@ public class PlayerController : MonoBehaviour
                     Playercontrol_enabled = false;
                     Controller.enabled = false;
                     OnLadder = true;
-
-                    if (interactable.UseX() == true)
-                    {
-                        this.transform.position = new Vector3 (interactable.OBJECT_ForcePosition().x, this.transform.position.y, this.transform.position.z);
-                    }
-                    if (interactable.UseY() == true)
-                    {
-                        this.transform.position = new Vector3(this.transform.position.x, interactable.OBJECT_ForcePosition().y, this.transform.position.z);
-                    }
-                    if (interactable.UseZ() == true)
-                    {
-                        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, interactable.OBJECT_ForcePosition().z);
-                    }
-
+                    Debug.Log(transform.localPosition);
+                    Debug.Log(interactable.OBJECT_ForcePosition());
+                    
+                    this.transform.localPosition = new Vector3 (interactable.OBJECT_ForcePosition().x, transform.localPosition.y, interactable.OBJECT_ForcePosition().z);
+                    
+                    Debug.Log(transform.localPosition);
                 }
                 break;
             case Interactable.Interactiontype.BUTTON:

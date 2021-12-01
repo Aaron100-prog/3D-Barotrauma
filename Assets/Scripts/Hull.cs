@@ -19,6 +19,18 @@ public class Hull : MonoBehaviour
         Fillroomwithoxy();
         CreateWater();
     }
+    public void Update()
+    {
+        WaterParent.transform.localScale = new Vector3(1, WaterLevelInHull / 100, 1);
+        if (WaterLevelInHull == 0)
+        {
+            WaterParent.SetActive(false);
+        }
+        else
+        {
+            WaterParent.SetActive(true);
+        }
+    }
     private void CalculateMaxOxygen()
     {
         BoxCollider coll = GetComponent<BoxCollider>();

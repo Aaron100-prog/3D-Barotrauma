@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Hull : MonoBehaviour
 {
-    public float MaxOxygenInHull;
+    public float HullVolume;
     public float OxygenInHull;
-    public float WaterLevelInHull = 0f;
+    public float WaterInHull = 0f;
     public float PressureInHull = 0f;
     float Volume;
 
@@ -21,8 +21,8 @@ public class Hull : MonoBehaviour
     }
     public void Update()
     {
-        WaterParent.transform.localScale = new Vector3(1, WaterLevelInHull / 100, 1);
-        if (WaterLevelInHull == 0)
+        WaterParent.transform.localScale = new Vector3(1, WaterInHull / HullVolume, 1);
+        if (WaterInHull == 0)
         {
             WaterParent.SetActive(false);
         }
@@ -30,17 +30,21 @@ public class Hull : MonoBehaviour
         {
             WaterParent.SetActive(true);
         }
+        if(WaterInHull > HullVolume)
+        {
+            WaterInHull = HullVolume;
+        }
     }
-    private void CalculateMaxOxygen()
+    private void CalculateHullVolume()
     {
         BoxCollider coll = GetComponent<BoxCollider>();
-        MaxOxygenInHull = coll.size.x * coll.size.y * coll.size.z * 15f;
+        HullVolume = coll.size.x * coll.size.y * coll.size.z * 15f;
     }
 
     public void Fillroomwithoxy()
     {
-        CalculateMaxOxygen();
-        OxygenInHull = MaxOxygenInHull;
+        CalculateHullVolume();
+        OxygenInHull = HullVolume;
     }
 
     private void CreateWater()

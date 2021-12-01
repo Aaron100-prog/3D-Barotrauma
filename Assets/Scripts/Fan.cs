@@ -34,13 +34,13 @@ public class Fan : MonoBehaviour
     {
         if(active)
         {
-            if(thishull.OxygenInHull < thishull.MaxOxygenInHull - 5f)
+            if(thishull.OxygenInHull < thishull.HullVolume - 5f)
             {
                 thishull.OxygenInHull = thishull.OxygenInHull + 5f * Time.deltaTime;
             }
             else
             {
-                float difference = thishull.MaxOxygenInHull - thishull.OxygenInHull;
+                float difference = thishull.HullVolume - thishull.OxygenInHull;
                 thishull.OxygenInHull = thishull.OxygenInHull + difference;
             }
         }

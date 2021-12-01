@@ -1326,9 +1326,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efef4c892474a5e47aa817a4398d8edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxOxygenInHull: 0
+  HullVolume: 0
   OxygenInHull: 0
-  WaterLevelInHull: 0
+  WaterInHull: 0
   PressureInHull: 0
 --- !u!4 &252674600 stripped
 Transform:
@@ -2614,9 +2614,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efef4c892474a5e47aa817a4398d8edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxOxygenInHull: 0
+  HullVolume: 0
   OxygenInHull: 0
-  WaterLevelInHull: 0
+  WaterInHull: 0
   PressureInHull: 0
 --- !u!1 &606172205
 GameObject:
@@ -8617,9 +8617,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efef4c892474a5e47aa817a4398d8edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxOxygenInHull: 0
+  HullVolume: 0
   OxygenInHull: 0
-  WaterLevelInHull: 0
+  WaterInHull: 0
   PressureInHull: 0
 --- !u!1 &1911313131
 GameObject:

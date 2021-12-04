@@ -9,10 +9,11 @@ public class Fan : MonoBehaviour
     public bool active = true;
     Animator animator;
     Hull thishull;
-    public LayerMask HullMask;
+    private LayerMask HullMask;
 
     void Start()
     {
+        HullMask = LayerMask.GetMask("Hull");
         animator = GetComponent<Animator>();
 
         Collider[] hitcollider = Physics.OverlapSphere(this.transform.position, 0f, HullMask, QueryTriggerInteraction.Collide);

@@ -9,11 +9,12 @@ public class Pump : MonoBehaviour
     private bool active = true;
     public float targetwaterlevel = 0;
     public float waterchange = 20f;
-    public LayerMask HullMask;
+    private LayerMask HullMask;
     private Hull thishull;
 
     public void Start()
     {
+        HullMask = LayerMask.GetMask("Hull");
         Collider[] hitcollider = Physics.OverlapSphere(this.transform.position, 0f, HullMask, QueryTriggerInteraction.Collide);
         if (hitcollider.Length != 0)
         {

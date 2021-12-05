@@ -13,6 +13,7 @@ public class Hull : MonoBehaviour
     private BoxCollider Collider;
     private GameObject WaterParent;
     private GameObject Water;
+    private GameObject WaterHighpoint;
 
     public void Start()
     {
@@ -63,5 +64,9 @@ public class Hull : MonoBehaviour
         WaterCollider.isTrigger = true;
 
         WaterParent.transform.localScale = new Vector3(1, 0, 1);
+
+        WaterHighpoint = new GameObject("Waterhighpoint " + name);
+        WaterHighpoint.transform.SetParent(Water.transform);
+        WaterHighpoint.transform.localPosition = new Vector3(0,0.5f,0);
     }
 }

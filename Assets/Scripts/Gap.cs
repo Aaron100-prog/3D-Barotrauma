@@ -12,7 +12,7 @@ public class Gap : MonoBehaviour
     public void Start()
     {
         HullMask = LayerMask.GetMask("Hull");
-        Collider[] foundhullcollider = Physics.OverlapBox(new Vector3(0, 0, 0), new Vector3(1,1,1), transform.rotation, HullMask, QueryTriggerInteraction.Collide);
+        Collider[] foundhullcollider = Physics.OverlapBox(transform.localPosition, new Vector3(1,1,1), Quaternion.identity, HullMask, QueryTriggerInteraction.Collide);
         for (int i = 0; i < foundhullcollider.Length; i++)
         {
             

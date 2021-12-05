@@ -8,6 +8,7 @@ public class Gap : MonoBehaviour
     [SerializeField]
     public List<Hull> Hulls;
     private LayerMask HullMask;
+    private GameObject Lowpoint;
     public void Start()
     {
         HullMask = LayerMask.GetMask("Hull");
@@ -25,5 +26,9 @@ public class Gap : MonoBehaviour
             }
 
         }
+
+        Lowpoint = new GameObject("Lowpoint " + name);
+        Lowpoint.transform.SetParent(transform);
+        Lowpoint.transform.localPosition = new Vector3(0, -0.5f, 0);
     }
 }

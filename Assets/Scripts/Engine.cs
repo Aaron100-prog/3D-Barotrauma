@@ -5,8 +5,9 @@ using UnityEngine;
 public class Engine : MonoBehaviour
 {
     
-    public float ID = 1;
+    public int ID = 1;
     private float neededpower = 15;
+    public int TerminalID = 1;
     private bool active = true;
     public float targetthrottle = 0;
     private float activthrottle;

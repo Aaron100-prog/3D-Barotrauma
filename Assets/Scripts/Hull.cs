@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Hull : MonoBehaviour
 {
+    public bool Isballast;
+
     public float HullVolume;
     public float OxygenInHull;
     public float WaterInHull = 0f;
@@ -68,5 +70,10 @@ public class Hull : MonoBehaviour
         WaterHighpoint = new GameObject("Waterhighpoint " + name);
         WaterHighpoint.transform.SetParent(Water.transform);
         WaterHighpoint.transform.localPosition = new Vector3(0,0.5f,0);
+    }
+
+    public void forcewaterlevel(float targetpercent)
+    {
+        WaterInHull = HullVolume / 100 * targetpercent;
     }
 }

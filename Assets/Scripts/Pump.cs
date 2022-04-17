@@ -11,6 +11,8 @@ public class Pump : MonoBehaviour
     public float waterchange = 20f;
     private LayerMask HullMask;
     private Hull thishull;
+    [HideInInspector]
+    public bool isballastpump;
 
     public void Start()
     {
@@ -22,6 +24,10 @@ public class Pump : MonoBehaviour
             if (hull != null)
             {
                 thishull = hull;
+                if(thishull.Isballast)
+                {
+                    isballastpump = true;
+                }
             }
             else
             {

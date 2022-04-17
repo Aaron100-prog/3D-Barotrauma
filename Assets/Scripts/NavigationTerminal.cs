@@ -31,7 +31,7 @@ public class NavigationTerminal : MonoBehaviour
         {
             for (int i = 0; i < EngineswithID.Count; i++)
             {
-                EngineswithID[i].targetthrottle = setxspeed;
+                EngineswithID[i].targetthrottle = setxSlider.value;
             }
         }
     }

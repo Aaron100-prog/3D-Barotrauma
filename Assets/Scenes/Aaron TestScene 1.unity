@@ -1326,6 +1326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efef4c892474a5e47aa817a4398d8edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Isballast: 0
   HullVolume: 0
   OxygenInHull: 0
   WaterInHull: 0
@@ -2614,6 +2615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efef4c892474a5e47aa817a4398d8edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Isballast: 0
   HullVolume: 0
   OxygenInHull: 0
   WaterInHull: 0
@@ -4233,6 +4235,7 @@ MonoBehaviour:
   ID: 10
   targetwaterlevel: 0
   waterchange: 20
+  isballastpump: 0
 --- !u!65 &910830456
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8766,6 +8769,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1885425093}
+  - component: {fileID: 1885425094}
   m_Layer: 0
   m_Name: U Boot
   m_TagString: Untagged
@@ -8791,6 +8795,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1885425094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885425092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d9540e73130414aa709dc37203b87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neutralballastpercent: 0
 --- !u!1 &1886916937
 GameObject:
   m_ObjectHideFlags: 0
@@ -8982,6 +8999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efef4c892474a5e47aa817a4398d8edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Isballast: 1
   HullVolume: 0
   OxygenInHull: 0
   WaterInHull: 0
@@ -9641,7 +9659,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 1
-  throttle: 0
+  TerminalID: 1
+  targetthrottle: 0
+  throttlechange: 2
 --- !u!1 &2004938113
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,8 @@ public class ShipController : MonoBehaviour
 
     public float totalwatervolume;
     [SerializeField]
+    private float targetyspeed = 0;
+    [SerializeField]
     private float speed = 0;
     public void Start()
     {
@@ -64,7 +66,49 @@ public class ShipController : MonoBehaviour
             secwatervolume += hulls[i].WaterInHull;
         }
         totalwatervolume = secwatervolume;
-        
+
+        targetyspeed = (totalwatervolume - totalneutralvolume) / 100f;
+
+        if (speed != targetyspeed)
+        {
+            if (Mathf.RoundToInt(speed) > targetyspeed)
+            {
+                float difference = (targetyspeed - speed) * -1;
+                //Debug.Log(difference);
+                if (difference > 5f)
+                {
+                    speed -= 5f * Time.deltaTime;
+                }
+                else
+                {
+                    speed -= difference * Time.deltaTime;
+                    if (System.Math.Round(difference, 2) == 0.00)
+                    {
+                        speed = targetyspeed;
+                    }
+                }
+            }
+            else
+            {
+                float difference = targetyspeed - speed;
+                //Debug.Log(difference);
+                if (difference > 5f)
+                {
+                    speed += 5f * Time.deltaTime;
+                }
+                else
+                {
+                    speed += difference * Time.deltaTime;
+                    if (System.Math.Round(difference, 2) == 0.00)
+                    {
+                        speed = targetyspeed;
+                    }
+                }
+            }
+        }
+
+        transform.position = transform.position + (transform.up * -speed * Time.deltaTime);
+
         /*if(totalwatervolume > totalneutralvolume)
         {
             speed += 1f;
@@ -78,7 +122,7 @@ public class ShipController : MonoBehaviour
             Mathf.Lerp(speed, 0f, 2f);
         }
 
-        transform.position = transform.position + (transform.up * speed * Time.deltaTime);
+        
         */
     }
 }

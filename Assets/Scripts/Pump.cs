@@ -45,7 +45,7 @@ public class Pump : MonoBehaviour
                 if(Mathf.RoundToInt(thishull.WaterInHull / thishull.HullVolume * 100) > targetwaterlevel)
                 {
                     float difference = ((targetwaterlevel / 100 * thishull.HullVolume) - thishull.WaterInHull) * -1;
-                    Debug.Log(difference);
+                    //Debug.Log(difference);
                     if (difference > waterchange)
                     {
                         thishull.WaterInHull -= waterchange * Time.deltaTime;
@@ -62,7 +62,7 @@ public class Pump : MonoBehaviour
                 else
                 {
                     float difference = ((targetwaterlevel / 100 * thishull.HullVolume) - thishull.WaterInHull);
-                    Debug.Log(difference);
+                    //Debug.Log(difference);
                     if (difference > waterchange)
                     {
                         thishull.WaterInHull += waterchange * Time.deltaTime;

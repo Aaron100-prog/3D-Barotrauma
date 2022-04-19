@@ -209,6 +209,21 @@ public class PlayerController : MonoBehaviour
             OnLadder = false;
         }
 
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            MenuController.instance.ToggleMenu();
+            if(MenuController.instance.menuopen)
+            {
+                Playercontrol_enabled = false;
+                Cameracontrol_enabled = false;
+            }
+            else
+            {
+                Playercontrol_enabled = true;
+                Cameracontrol_enabled = true;
+            }
+        }
+
         if(swimming == false)
         {
             if (Cameracontrol_enabled == true)
@@ -419,7 +434,7 @@ public class PlayerController : MonoBehaviour
                 {
                     if (Input.GetKeyDown(KeyCode.F))
                     {
-                        GameObject Freecam = Instantiate(FreecamPrefab, this.transform.position, Quaternion.identity) as GameObject;
+                        GameObject Freecam = Instantiate(FreecamPrefab, transform.position, Quaternion.identity) as GameObject;
                         Playercontrol_enabled = false;
                         Cameracontrol_enabled = false;
                         Freecam.SendMessage("GetPlayer", this.gameObject);

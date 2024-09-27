@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     
 
     [Header("Camera Movement")]
-    public float sensitivity = 180f;
+    public float sensitivity = 2f;
     [HideInInspector]
     private float yRotation = 0f;
     private float xRotation = 0f;
@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public Camera Camera;
     private bool Zoomed = false;
+    public GameObject WaterPlane;
 
     [Header("Player Movement")]
     public bool Playercontrol_enabled = true;
@@ -33,6 +34,8 @@ public class PlayerController : MonoBehaviour
     private bool onGround;
     private bool inside;
     public LayerMask HullMask;
+
+    public bool Crouched;
 
     [Header("Swimming")]
     public bool swimming = false;
@@ -209,27 +212,12 @@ public class PlayerController : MonoBehaviour
             OnLadder = false;
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            MenuController.instance.ToggleMenu();
-            if(MenuController.instance.menuopen)
-            {
-                Playercontrol_enabled = false;
-                Cameracontrol_enabled = false;
-            }
-            else
-            {
-                Playercontrol_enabled = true;
-                Cameracontrol_enabled = true;
-            }
-        }
-
         if(swimming == false)
         {
             if (Cameracontrol_enabled == true)
             {
-                float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
-                float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+                float mouseX = Input.GetAxis("Mouse X") * sensitivity;
+                float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
                 if(!altlookactiv)
                 {
                     yRotation -= mouseY;
@@ -359,14 +347,53 @@ public class PlayerController : MonoBehaviour
                 
                 velocity.y += fallspeed * Time.deltaTime;
                 Controller.Move(velocity * Time.deltaTime);
+
+                if (Input.GetKeyDown(KeyCode.LeftControl))
+                {
+                    Crouched = !Crouched;
+                    if (Crouched)
+                    {
+                        walkspeed = 1;
+                        runspeed = 2;
+                        Controller.height = 1;
+                    }
+                    else
+                    {
+                        walkspeed = 3;
+                        runspeed = 5;
+                        Controller.height = 2;
+                    }
+                }
+                if (Crouched)
+                {
+                    if (System.Math.Round(Camera.transform.localPosition.y, 2) != 0.15f)
+                    {
+                        Camera.transform.localPosition = new Vector3(0f, Mathf.Lerp(Camera.transform.localPosition.y, 0.15f, Time.deltaTime * 10), 0f);
+                        if (System.Math.Round(Camera.transform.localPosition.y, 2) == 0.15f)
+                        {
+                            Camera.transform.localPosition = new Vector3(0f, 0.15f, 0f);
+                        }
+                    }
+                }
+                else
+                {
+                    if (System.Math.Round(Camera.transform.localPosition.y, 2) != 0.75f)
+                    {
+                        Camera.transform.localPosition = new Vector3(0f, Mathf.Lerp(Camera.transform.localPosition.y, 0.75f, Time.deltaTime * 10), 0f);
+                        if (System.Math.Round(Camera.transform.localPosition.y, 2) == 0.75f)
+                        {
+                            Camera.transform.localPosition = new Vector3(0f, 0.75f, 0f);
+                        }
+                    }
+                }
             }
         }
         else
         {
             if (Cameracontrol_enabled == true)
             {
-                float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
-                float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+                float mouseX = Input.GetAxis("Mouse X") * sensitivity;
+                float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
                 if (!altlookactiv)
                 {
                     this.transform.Rotate(Vector3.left * mouseY + Vector3.up * mouseX);
@@ -488,6 +515,7 @@ public class PlayerController : MonoBehaviour
     public void EnterHull(Collider HullParent)
     {
         swimming = false;
+        WaterPlane.SetActive(false);
 
         Camera.transform.Rotate(Vector3.up * this.transform.localRotation.x);
         this.transform.SetParent(HullParent.transform.parent.parent);
@@ -496,6 +524,7 @@ public class PlayerController : MonoBehaviour
 
     public void ExitHull()
     {
+        WaterPlane.SetActive(true);
         swimming = true;
 
         this.transform.localRotation = Quaternion.Euler(Camera.transform.eulerAngles.x, this.transform.eulerAngles.y, this.transform.eulerAngles.z);

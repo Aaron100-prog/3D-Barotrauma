@@ -40,10 +40,12 @@ public class PauseMenuManager : MonoBehaviour
         if (Cursor.lockState == CursorLockMode.Locked)
         {
             Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
         }
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
+            Time.timeScale = 1;
         }
     }
 

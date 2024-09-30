@@ -6,7 +6,7 @@ using UnityEngine;
 public class FreecamController : MonoBehaviour
 {
     [Header("Camera Movement")]
-    private float sensitivity = 210f;
+    private float sensitivity = 2f;
     private float flyingspeed = 2f;
     private float fastflyingspeed = 7f;
     [HideInInspector]
@@ -17,6 +17,7 @@ public class FreecamController : MonoBehaviour
     private GameObject canvas;
 
     PlayerController Controller;
+    bool enabled = true;
     public void GetPlayer(GameObject ParsedPlayer)
     {
         Controller = ParsedPlayer.gameObject.GetComponent<PlayerController>();
@@ -33,9 +34,15 @@ public class FreecamController : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            enabled = !enabled;
+        }
+        if (!enabled) return;
+
         //Camera
-        float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxis("Mouse X") * sensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
         yRotation -= mouseY;
         xRotation += mouseX;
         yRotation = Mathf.Clamp(yRotation, -90f, 90f);

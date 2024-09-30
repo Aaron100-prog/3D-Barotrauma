@@ -353,14 +353,14 @@ public class PlayerController : MonoBehaviour
                     Crouched = !Crouched;
                     if (Crouched)
                     {
-                        walkspeed = 1;
-                        runspeed = 2;
+                        walkspeed = 0.5f;
+                        runspeed = 1.5f;
                         Controller.height = 1;
                     }
                     else
                     {
-                        walkspeed = 3;
-                        runspeed = 5;
+                        walkspeed = 1.5f;
+                        runspeed = 4;
                         Controller.height = 2;
                     }
                 }
